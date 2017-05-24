@@ -19,6 +19,7 @@ public class RegularUser : User
     private byte[] profilePicture;
     private List<RegularUser> listOfFriends;
     private List<Hike> listOfHikes;
+    private bool active;
 
     public string FirstName
     {
@@ -186,6 +187,19 @@ public class RegularUser : User
         set
         {
             listOfHikes = value;
+        }
+    }
+
+    public bool Active
+    {
+        get
+        {
+            return active;
+        }
+
+        set
+        {
+            active = value;
         }
     }
 

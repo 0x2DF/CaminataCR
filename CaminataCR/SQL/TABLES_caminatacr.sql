@@ -34,7 +34,8 @@ fechaNacimiento DATE NOT NULL,
 sexo CHARACTER(1) NOT NULL CHECK (sexo='m' OR sexo ='f'),
 nacionalidad VARCHAR(20) NOT NULL,
 fotografia VARBINARY(MAX),
-cuentaBancaria NUMERIC(20) NOT NULL
+cuentaBancaria NUMERIC(20) NOT NULL,
+activo BIT NOT NULL
 )
 
 CREATE TABLE Amigos
@@ -47,25 +48,29 @@ CONSTRAINT PK_Amigos PRIMARY KEY (idUsuario1, idUsuario2)
 CREATE TABLE TipoDeCaminata
 (
 idTipoDeCaminata INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-tipoDeCaminata VARCHAR(30) NOT NULL
+tipoDeCaminata VARCHAR(30) NOT NULL,
+activo BIT NOT NULL
 )
 
 CREATE TABLE NivelDeDificultad
 (
 idNivelDeDificultad INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-nivelDeDificultad VARCHAR(30) NOT NULL
+nivelDeDificultad VARCHAR(30) NOT NULL,
+activo BIT NOT NULL
 )
 
 CREATE TABLE NivelDePrecio
 (
 idNivelDePrecio INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-nivelDePrecio VARCHAR(30) NOT NULL
+nivelDePrecio VARCHAR(30) NOT NULL,
+activo BIT NOT NULL
 )
 
 CREATE TABLE NivelDeCalidad
 (
 idNivelDeCalidad INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-nivelDeCalidad VARCHAR(30) NOT NULL
+nivelDeCalidad VARCHAR(30) NOT NULL,
+activo BIT NOT NULL
 )
 
 -- START
