@@ -8,7 +8,7 @@ public class User
     protected int userId;
     protected string account;
     protected string password;
-    protected string role;
+    protected int roleId;
 
     public int UserId
     {
@@ -49,16 +49,16 @@ public class User
         }
     }
 
-    public string Role
+    public int RoleId
     {
         get
         {
-            return role;
+            return roleId;
         }
 
         set
         {
-            role = value;
+            roleId = value;
         }
     }
 
