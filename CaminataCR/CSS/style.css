@@ -94,11 +94,11 @@
 
 
 .login-block2 {
-border-top: 5px solid #ffdd01;
+border-top: 5px solid #ff2b20;
 }
 .login-block2 input:active, .login-block2 input:focus {
-border: 1px solid #ffdd01;
+border: 1px solid #ff2b20;
 }
 .login-block2 button {
-border: 1px solid #ffdd01;
+border: 1px solid #ff2b20;
 }

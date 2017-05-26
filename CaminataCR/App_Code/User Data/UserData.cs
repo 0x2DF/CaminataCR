@@ -103,12 +103,12 @@ public class UserData : BaseData
         try
         {
             SqlConnection connection = ManageDatabaseConnection("Open");
-            using (SqlCommand sqlCommand = new SqlCommand("addUsuario", connection))
+            using (SqlCommand sqlCommand = new SqlCommand("addUser", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.AddWithValue("@nombreDeCuenta", regularUser.Account);
-                sqlCommand.Parameters.AddWithValue("@contrasena", regularUser.Password);
-                sqlCommand.Parameters.AddWithValue("@rol", regularUser.RoleId);
+                sqlCommand.Parameters.AddWithValue("@account", regularUser.Account);
+                sqlCommand.Parameters.AddWithValue("@password", regularUser.Password);
+                sqlCommand.Parameters.AddWithValue("@roleId", regularUser.RoleId);
                 var returnParameter = sqlCommand.Parameters.AddWithValue("@responseMessage", responseMessage);
 
                 //var returnParameter = sqlCommand.Parameters.Add("@responseMessage", SqlDbType.NVarChar, 250);
@@ -132,40 +132,40 @@ public class UserData : BaseData
         try
         {
             SqlConnection connection = ManageDatabaseConnection("Open");
-            using (SqlCommand sqlCommand = new SqlCommand("addCliente", connection))
+            using (SqlCommand sqlCommand = new SqlCommand("addRegUser", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.AddWithValue("@nombreDeCuenta", regularUser.Account);
+                sqlCommand.Parameters.AddWithValue("@account", regularUser.Account);
 
                 if (regularUser.ProfilePicture == null)
                 {
-                    sqlCommand.Parameters.AddWithValue("@fotografia", DBNull.Value);
+                    //sqlCommand.Parameters.AddWithValue("@photo", DBNull.Value);
                 }
                 else
                 {
                     //sqlCommand.Parameters.AddWithValue("@fotografia", regularUser.ProfilePicture);
-                    sqlCommand.Parameters.Add("@fotografia", SqlDbType.VarBinary).Value = regularUser.ProfilePicture;
+                    sqlCommand.Parameters.Add("@photo", SqlDbType.VarBinary).Value = regularUser.ProfilePicture;
                 }
 
-                sqlCommand.Parameters.AddWithValue("@primerNombre", regularUser.FirstName);
+                sqlCommand.Parameters.AddWithValue("@FirstName", regularUser.FirstName);
 
                 if (regularUser.MiddleName == null)
                 {
-                    sqlCommand.Parameters.AddWithValue("@segundoNombre", DBNull.Value);
+                    sqlCommand.Parameters.AddWithValue("@MiddleName", DBNull.Value);
                 }
                 else
                 {
-                    sqlCommand.Parameters.AddWithValue("@segundoNombre", regularUser.MiddleName);
+                    sqlCommand.Parameters.AddWithValue("@MiddleName", regularUser.MiddleName);
                 }
 
-                sqlCommand.Parameters.AddWithValue("@primerApellido", regularUser.Surname);
-                sqlCommand.Parameters.AddWithValue("@segundoApellido", regularUser.SecondSurname);
-                sqlCommand.Parameters.AddWithValue("@correo", regularUser.Email);
-                sqlCommand.Parameters.AddWithValue("@telefono", regularUser.TelephoneNumber);
-                sqlCommand.Parameters.AddWithValue("@fechaNacimiento", regularUser.Birthdate);
-                sqlCommand.Parameters.AddWithValue("@sexo", regularUser.Sex);
-                sqlCommand.Parameters.AddWithValue("@nacionalidad", regularUser.Nacionality);
-                sqlCommand.Parameters.AddWithValue("@cuentaBancaria", regularUser.BankAccount);
+                sqlCommand.Parameters.AddWithValue("@Surname", regularUser.Surname);
+                sqlCommand.Parameters.AddWithValue("@SecondSurname", regularUser.SecondSurname);
+                sqlCommand.Parameters.AddWithValue("@Email", regularUser.Email);
+                sqlCommand.Parameters.AddWithValue("@TelephoneNumber", regularUser.TelephoneNumber);
+                sqlCommand.Parameters.AddWithValue("@Birthdate", regularUser.Birthdate.ToString("yyyy/MM/dd"));
+                sqlCommand.Parameters.AddWithValue("@Sex", regularUser.Sex);
+                sqlCommand.Parameters.AddWithValue("@Nacionality", regularUser.Nacionality);
+                sqlCommand.Parameters.AddWithValue("@BankAccount", regularUser.BankAccount);
                 var returnParameter = sqlCommand.Parameters.AddWithValue("@responseMessage", responseMessage);
 
                 //var returnParameter = sqlCommand.Parameters.Add("@responseMessage", SqlDbType.NVarChar, 250);
@@ -186,25 +186,31 @@ public class UserData : BaseData
 
     public bool CheckUsername(RegularUser regularUser)
     {
-        int result = -1;
-        string query = "SELECT COUNT(*) FROM Usuarios WHERE nombreDeCuenta = '" + regularUser.Account + "'";
+        int errorId = -1;
         try
         {
             SqlConnection connection = ManageDatabaseConnection("Open");
-            using (SqlCommand sqlCommand = new SqlCommand(query, connection))
+            using (SqlCommand sqlCommand = new SqlCommand("checkUsername", connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@account", regularUser.Account);
 
-                result = Convert.ToInt32(sqlCommand.ExecuteScalar());
+                var returnParameter = sqlCommand.Parameters.Add("@errorId", SqlDbType.Int);
+                returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                sqlCommand.ExecuteNonQuery();
+                errorId = Convert.ToInt32(returnParameter.Value);
+
             }
-            connection.Close();
+            ManageDatabaseConnection("Close");
+
         }
         catch (SqlException sqlException)
         {
             throw sqlException;
         }
 
-        if (result == 0)
+        if (errorId == 0)
         {
             return true;
         }
@@ -216,25 +222,31 @@ public class UserData : BaseData
 
     public bool CheckEmail(RegularUser regularUser)
     {
-        int result = -1;
-        string query = "SELECT COUNT(correo) FROM Usuarios WHERE correo = '" + regularUser.Email + "'";
+        int errorId = -1;
         try
         {
             SqlConnection connection = ManageDatabaseConnection("Open");
-            using (SqlCommand sqlCommand = new SqlCommand(query, connection))
+            using (SqlCommand sqlCommand = new SqlCommand("checkEmail", connection))
             {
-                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@email", regularUser.Email);
 
-                result = Convert.ToInt32(sqlCommand.ExecuteScalar());
+                var returnParameter = sqlCommand.Parameters.Add("@errorId", SqlDbType.Int);
+                returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                sqlCommand.ExecuteNonQuery();
+                errorId = Convert.ToInt32(returnParameter.Value);
+
             }
-            connection.Close();
+            ManageDatabaseConnection("Close");
+
         }
         catch (SqlException sqlException)
         {
             throw sqlException;
         }
 
-        if (result == 0)
+        if (errorId == 0)
         {
             return true;
         }

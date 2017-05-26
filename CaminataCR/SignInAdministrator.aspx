@@ -36,7 +36,7 @@
                 <asp:TextBox ID="username" placeholder="Usuario"  required runat="server"></asp:TextBox>
 
                 <asp:TextBox ID="password" placeholder="Contraseña" required runat="server" type="password"></asp:TextBox>
-                <asp:Button ID="a" runat="server" OnClick="SignIn" Text="Iniciar Sesion" Class="login-block button" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" />
+                <asp:Button ID="a" runat="server" Text="Iniciar Sesion" Class="login-block button" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" />
                 <asp:Label ID="Errores" runat="server" Text=" <br> " CssClass="text-danger"></asp:Label>    
             </div>
         </div>
