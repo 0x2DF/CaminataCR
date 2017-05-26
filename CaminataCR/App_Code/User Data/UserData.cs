@@ -24,6 +24,7 @@ public class UserData : BaseData
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 sqlCommand.Parameters.AddWithValue("@account", user.Account);
                 sqlCommand.Parameters.AddWithValue("@password", user.Password);
+                sqlCommand.Parameters.AddWithValue("@roleId", user.RoleId);
 
                 var returnParameter = sqlCommand.Parameters.Add("@errorId", SqlDbType.Int);
                 returnParameter.Direction = ParameterDirection.ReturnValue;
@@ -59,6 +60,7 @@ public class UserData : BaseData
                 {
                     if (sqlReader.Read())
                     {
+                        regularUser.UserId = (int)sqlReader["idUsuario"];
                         regularUser.FirstName = sqlReader["primerNombre"].ToString();
                         if (sqlReader["segundoNombre"] != null)
                         {
@@ -254,13 +256,14 @@ public class UserData : BaseData
             using (SqlCommand sqlCommand = new SqlCommand("getFriendsFromUser", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.AddWithValue("@idUsuario", user.IdUsuario);
+                sqlCommand.Parameters.AddWithValue("@idUsuario", regularUser.UserId);
 
                 using (SqlDataReader sqlReader = sqlCommand.ExecuteReader())
                 {
                     while (sqlReader.Read())
                     {
                         User friend = new User();
+                        /*
                         friend.IdUsuario = (int)sqlReader["idUsuario"];
                         friend.PrimerNombre = sqlReader["primerNombre"].ToString();
                         friend.SegundoNombre = sqlReader["segundoNombre"].ToString();
@@ -274,7 +277,7 @@ public class UserData : BaseData
                         {
                             friend.Fotografia = (byte[])sqlReader["fotografia"];
                         }
-                        listOfFriends.Add(friend);
+                        listOfFriends.Add(friend);*/
                     }
                 }
             }

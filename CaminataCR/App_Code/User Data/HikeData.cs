@@ -24,15 +24,15 @@ public class HikeData : BaseData
             using (SqlCommand sqlCommand = new SqlCommand("getReviewsFromUser", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.AddWithValue("@idUsuario", user.IdUsuario);
+                sqlCommand.Parameters.AddWithValue("@idUsuario", regularUser.UserId);
 
                 using (SqlDataReader sqlReader = sqlCommand.ExecuteReader())
                 {
                     while (sqlReader.Read())
                     {
-                        Review review = new Review();
-                        review.IdReview = (int)sqlReader["idReview"];
-                        review.CalificacionCalidad = Convert.ToInt32(sqlReader["calificacionCalidad"]);
+                        Hike hike = new Hike();
+                        hike.HikeId = (int)sqlReader["idReview"];
+                        /*review.CalificacionCalidad = Convert.ToInt32(sqlReader["calificacionCalidad"]);
                         review.CalificacionPrecio = Convert.ToInt32(sqlReader["calificacionPrecio"]);
                         review.Descripcion = sqlReader["descripcion"].ToString();
                         review.FechaHora = Convert.ToDateTime(sqlReader["fechaHora"]);
@@ -66,7 +66,7 @@ public class HikeData : BaseData
                         }
                         r.TipoRestaurante = sqlReader["nombreTipoRestaurante"].ToString();
                         review.Restaurant = r;
-                        listOfReviews.Add(review);
+                        listOfReviews.Add(review);*/
                     }
                 }
             }
@@ -85,13 +85,13 @@ public class HikeData : BaseData
         SqlConnection connection = ManageDatabaseConnection("Open");
         using (SqlCommand sqlCommand = new SqlCommand("addReviews", connection))
         {
-            sqlCommand.CommandType = CommandType.StoredProcedure;
+            /*sqlCommand.CommandType = CommandType.StoredProcedure;
             sqlCommand.Parameters.AddWithValue("@descrip", review.Descripcion);
             sqlCommand.Parameters.AddWithValue("@calificacionPre", review.CalificacionPrecio.ToString());
             sqlCommand.Parameters.AddWithValue("@calficacionCali", review.CalificacionCalidad.ToString());
             sqlCommand.Parameters.AddWithValue("@idLoc", review.Local.IdLocal);
             sqlCommand.Parameters.AddWithValue("@idUsua", user.IdUsuario);
-            sqlCommand.Parameters.AddWithValue("@date", DateTime.Today);
+            sqlCommand.Parameters.AddWithValue("@date", DateTime.Today);*/
             sqlCommand.ExecuteNonQuery();
         }
         ManageDatabaseConnection("Close");

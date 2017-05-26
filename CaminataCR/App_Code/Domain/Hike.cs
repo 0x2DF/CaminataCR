@@ -6,6 +6,7 @@ using System.Web;
 
 public class Hike
 {
+    private int hikeId;
     private string hikeType;
     private string dificulty;
     private string price;
@@ -246,6 +247,19 @@ public class Hike
         set
         {
             likes = value;
+        }
+    }
+
+    public int HikeId
+    {
+        get
+        {
+            return hikeId;
+        }
+
+        set
+        {
+            hikeId = value;
         }
     }
 

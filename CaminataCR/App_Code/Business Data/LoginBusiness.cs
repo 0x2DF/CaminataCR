@@ -29,9 +29,6 @@ public class LoginBusiness
             case 2:
                 errorText = "Contraseña incorrecta.";
                 break;
-            case 3:
-                errorText = "Su cuenta ha sido desactivada. Contacte a un administrador";
-                break;
             default:
                 errorText = "Hay un error no previsto. Contacte a un administrador";
                 break;
@@ -42,9 +39,9 @@ public class LoginBusiness
     public RegularUser GetRegularUser(User user)
     {
         RegularUser regularUser = userData.GetRegularUser(user);
-
-        regularUser.UserId = user.UserId;
+        
         regularUser.Account = user.Account;
+        regularUser.Password = user.Password;
         regularUser.RoleId = user.RoleId;
 
         return regularUser;

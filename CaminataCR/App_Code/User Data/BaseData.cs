@@ -6,7 +6,7 @@ public class BaseData
      //method to open or close the database connection
     public SqlConnection ManageDatabaseConnection(string actionToPerform)
     {
-        string connectionString = "Data Source=0X2F-\SQLEXPRESS;Initial Catalog=caminataCR;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        string connectionString = "Data Source=0X2F-\\SQLEXPRESS;Initial Catalog=caminataCR;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         SqlConnection sqlConnection = new SqlConnection(connectionString);
 
         try
