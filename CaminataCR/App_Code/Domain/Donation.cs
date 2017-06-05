@@ -5,13 +5,13 @@ using System.Web;
 
 public class Donation
 {
-    private float amount;
+    private double amount;
     private DateTime dateTime;
     public Donation()
     {
     }
 
-    public float Amount
+    public double Amount
     {
         get
         {

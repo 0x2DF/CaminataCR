@@ -4,9 +4,25 @@
 public class BaseData
 {
      //method to open or close the database connection
-    public SqlConnection ManageDatabaseConnection(string actionToPerform)
+    public SqlConnection ManageDatabaseConnection(string actionToPerform, string userType)
     {
-        string connectionString = "Data Source=0X2F-\\SQLEXPRESS;Initial Catalog=caminataCR;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        string connectionString;
+        if (userType == "admin")
+        {
+            connectionString = "Data Source=0X2F-\\SQLEXPRESS;Integrated Security=False;User ID=admin;Password=admin;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        }else if (userType == "ICT")
+        {
+            connectionString = "Data Source=0X2F-\\SQLEXPRESS;Integrated Security=False;User ID=ICT;Password=ICT;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        }
+        else if (userType == "regular")
+        {
+            connectionString = "Data Source=0X2F-\\SQLEXPRESS;Integrated Security=False;User ID=regular;Password=regular;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        }
+        else
+        {
+            //connectionString = "Data Source=0X2F-\\SQLEXPRESS;Initial Catalog=caminataCR;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            connectionString = "error";
+        }
         SqlConnection sqlConnection = new SqlConnection(connectionString);
 
         try

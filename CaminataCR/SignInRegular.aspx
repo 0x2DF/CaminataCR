@@ -4,49 +4,106 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Inicio sesion Regular</title>
 
 
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href="css/style.css" rel="stylesheet" />
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        body
+        {
+            background-image: url('/images/fondo.jpg');
+        }
+        #page-wrapper
+        {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        #map {
+        height: 400px;
+        width: 100%;
+       }
 
+    </style>
 
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div class="center">
-            <div class="login-block login-block2">
-                <h1>Login</h1>
-                <asp:TextBox ID="username" placeholder="Usuario"  required runat="server"></asp:TextBox>
 
-                <asp:TextBox ID="password" placeholder="Contraseña" required runat="server" type="password"></asp:TextBox>
-                <asp:Button ID="a" runat="server" Text="Iniciar Sesion" OnClick="SignIn" Class="login-block button" BackColor="#ff2b20" BorderColor="#ff2b20" ForeColor="White" Font-Bold="True" />
-                <asp:Label ID="Errores" runat="server" Text=" <br> " CssClass="text-danger"></asp:Label>    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Iniciar sesión</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" runat="server">
+                            <fieldset>
+                                <div class="form-group">
+                                    <asp:TextBox ID="username" class="form-control" maxlength="20" placeholder="Usuario" runat="server"></asp:TextBox>
+                                    <asp:RequiredFieldValidator id="RFV_username"
+                                      controltovalidate="username"
+                                      validationgroup="login"
+                                      errormessage="Ingrese su nombre de usuario."
+                                      ForeColor="Red"
+                                      runat="Server">
+                                    </asp:RequiredFieldValidator>
+                                </div>
+                                <div class="form-group">
+                                    <asp:TextBox ID="password" class="form-control" placeholder="Contraseña" runat="server" type="password"></asp:TextBox>
+                                    <asp:RequiredFieldValidator id="RFV_password"
+                                      controltovalidate="password"
+                                      validationgroup="login"
+                                      errormessage="Ingrese su contraseña."
+                                      ForeColor="Red"
+                                      runat="Server">
+                                    </asp:RequiredFieldValidator>
+                                </div>
+                                <div class="form-group">
+                                    <asp:Label ID="Errors" runat="server" Text="" CssClass="text-danger"></asp:Label>
+                                </div>
+                                <asp:Button ID="Login_btn" runat="server" Text="Iniciar Sesion" OnClick="SignIn" class="btn btn-lg btn-success btn-block" causesvalidation="true" ValidationGroup="login"/>
+                                <asp:Button ID="Register_btn" runat="server" Text="Registrar" OnClick="SignUp" class="btn btn-lg btn-success btn-block" />
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-    </form>
+    </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
 </body>
-
-
 </html>

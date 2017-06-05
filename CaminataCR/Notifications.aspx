@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ControlPanel.aspx.cs" Inherits="ControlPanel" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Notifications.aspx.cs" Inherits="Notifications" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Panel de Control</title>
+    <title>Notificacion</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,13 +47,15 @@
     <form runat="server">
     <div id="wrapper">
         <!-- #include file ="includes\HeaderRegular.inc" -->
-
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Panel de Control</h1>
+                        <div id="heading" class="panel-heading" runat="server">
+                            
+                        </div>
+                        <!-- /.panel-heading -->
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>

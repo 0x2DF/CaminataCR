@@ -164,18 +164,10 @@ public partial class SignUpRegular : System.Web.UI.Page
 
     protected void outputErrors(List<string> errorList)
     {
-        //int i = 0;
         foreach (string error in errorList)
         {
-            Errores.Text += error;
-            Errores.Text += " <br> ";
-            /*TableRow firstRow = new TableRow();
-            TableCell tc = new TableCell();
-            tc.Text = error;
-            tc.ForeColor = System.Drawing.Color.Red;
-            firstRow.Cells.Add(tc);
-            TableRegisterError.Rows.Add(firstRow);
-            ++i;*/
+            Errors.Text += error;
+            Errors.Text += " <br> ";
         }
     }
 }

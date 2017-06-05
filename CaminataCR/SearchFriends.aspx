@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ControlPanel.aspx.cs" Inherits="ControlPanel" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SearchFriends.aspx.cs" Inherits="SearchFriends" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Panel de Control</title>
+    <title>Buscar Amigos</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,15 +47,32 @@
     <form runat="server">
     <div id="wrapper">
         <!-- #include file ="includes\HeaderRegular.inc" -->
-
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Panel de Control</h1>
+                        <h1 class="page-header">Buscar Amigos</h1>
                     </div>
                     <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="input-group custom-search-form">
+                            <asp:TextBox ID="searchInput" class="form-control" placeholder="Buscar..." runat="server"></asp:TextBox>
+                            <span class="input-group-btn">
+                                <asp:LinkButton ID="searchButton" runat="server" Text='<i class="fa fa-search"></i>' OnClick="SearchUser" Class="btn btn-default" />
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                     </div>
+                    <!-- /.col-lg-4 -->
+                </div>
+                <!-- /.row -->
+                <br />
+                <div id="main" class="row" runat="server">
+                    
                 </div>
                 <!-- /.row -->
             </div>

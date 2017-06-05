@@ -18,7 +18,7 @@ public class UserData : BaseData
         int errorId = 0;
         try
         {
-            SqlConnection connection = ManageDatabaseConnection("Open");
+            SqlConnection connection = ManageDatabaseConnection("Open", (user.RoleId == 3 ? "regular" : (user.RoleId == 2 ? "ICT" : "admin")) );
             using (SqlCommand sqlCommand = new SqlCommand("checkUser", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
@@ -33,7 +33,7 @@ public class UserData : BaseData
                 errorId = Convert.ToInt32(returnParameter.Value);
 
             }
-            ManageDatabaseConnection("Close");
+            ManageDatabaseConnection("Close", (user.RoleId == 3 ? "regular" : (user.RoleId == 2 ? "ICT" : "admin")));
 
         }
         catch (SqlException sqlException)
@@ -48,7 +48,7 @@ public class UserData : BaseData
         RegularUser regularUser = new RegularUser();
         try
         {
-            SqlConnection connection = ManageDatabaseConnection("Open");
+            SqlConnection connection = ManageDatabaseConnection("Open", "regular");
 
             using (SqlCommand sqlCommand = new SqlCommand("getUser", connection))
             {
@@ -86,7 +86,7 @@ public class UserData : BaseData
 
             }
 
-            ManageDatabaseConnection("Close");
+            ManageDatabaseConnection("Close", "regular");
 
         }
         catch (SqlException sqlException)
@@ -97,12 +97,41 @@ public class UserData : BaseData
         return regularUser;
     }
 
+    public string InsertUser(User user)
+    {
+        string responseMessage = "-------------------------------------------------------------------";
+        try
+        {
+            SqlConnection connection = ManageDatabaseConnection("Open", (user.RoleId == 3 ? "regular" : (user.RoleId == 2 ? "ICT" : "admin")));
+            using (SqlCommand sqlCommand = new SqlCommand("addUser", connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@account", user.Account);
+                sqlCommand.Parameters.AddWithValue("@password", user.Password);
+                sqlCommand.Parameters.AddWithValue("@roleId", user.RoleId);
+                var returnParameter = sqlCommand.Parameters.AddWithValue("@responseMessage", responseMessage);
+
+                //var returnParameter = sqlCommand.Parameters.Add("@responseMessage", SqlDbType.NVarChar, 250);
+                returnParameter.Direction = ParameterDirection.InputOutput;
+                sqlCommand.ExecuteNonQuery();
+                responseMessage = Convert.IsDBNull(returnParameter.Value) ? null : returnParameter.Value.ToString();
+            }
+            ManageDatabaseConnection("Close", (user.RoleId == 3 ? "regular" : (user.RoleId == 2 ? "ICT" : "admin")));
+        }
+        catch (SqlException sqlException)
+        {
+
+            throw sqlException;
+        }
+        return responseMessage;
+    }
+
     public string InsertUser(RegularUser regularUser)
     {
         string responseMessage = "-------------------------------------------------------------------";
         try
         {
-            SqlConnection connection = ManageDatabaseConnection("Open");
+            SqlConnection connection = ManageDatabaseConnection("Open", "regular");
             using (SqlCommand sqlCommand = new SqlCommand("addUser", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
@@ -116,7 +145,7 @@ public class UserData : BaseData
                 sqlCommand.ExecuteNonQuery();
                 responseMessage = Convert.IsDBNull(returnParameter.Value) ? null : returnParameter.Value.ToString();
             }
-            ManageDatabaseConnection("Close");
+            ManageDatabaseConnection("Close", "regular");
         }
         catch (SqlException sqlException)
         {
@@ -131,7 +160,7 @@ public class UserData : BaseData
         string responseMessage = "------------------------------------------------------------------";
         try
         {
-            SqlConnection connection = ManageDatabaseConnection("Open");
+            SqlConnection connection = ManageDatabaseConnection("Open", "regular");
             using (SqlCommand sqlCommand = new SqlCommand("addRegUser", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
@@ -173,7 +202,7 @@ public class UserData : BaseData
                 sqlCommand.ExecuteNonQuery();
                 responseMessage = Convert.IsDBNull(returnParameter.Value) ? null : returnParameter.Value.ToString();
             }
-            ManageDatabaseConnection("Close");
+            ManageDatabaseConnection("Close", "regular");
         }
         catch (SqlException sqlException)
         {
@@ -189,7 +218,7 @@ public class UserData : BaseData
         int errorId = -1;
         try
         {
-            SqlConnection connection = ManageDatabaseConnection("Open");
+            SqlConnection connection = ManageDatabaseConnection("Open", "regular");
             using (SqlCommand sqlCommand = new SqlCommand("checkUsername", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
@@ -202,7 +231,7 @@ public class UserData : BaseData
                 errorId = Convert.ToInt32(returnParameter.Value);
 
             }
-            ManageDatabaseConnection("Close");
+            ManageDatabaseConnection("Close", "regular");
 
         }
         catch (SqlException sqlException)
@@ -225,7 +254,7 @@ public class UserData : BaseData
         int errorId = -1;
         try
         {
-            SqlConnection connection = ManageDatabaseConnection("Open");
+            SqlConnection connection = ManageDatabaseConnection("Open", "regular");
             using (SqlCommand sqlCommand = new SqlCommand("checkEmail", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
@@ -238,7 +267,7 @@ public class UserData : BaseData
                 errorId = Convert.ToInt32(returnParameter.Value);
 
             }
-            ManageDatabaseConnection("Close");
+            ManageDatabaseConnection("Close", "regular");
 
         }
         catch (SqlException sqlException)
@@ -263,37 +292,37 @@ public class UserData : BaseData
         try
         {
             //open database connection
-            SqlConnection connection = ManageDatabaseConnection("Open");
+            SqlConnection connection = ManageDatabaseConnection("Open", "regular");
 
             using (SqlCommand sqlCommand = new SqlCommand("getFriendsFromUser", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.AddWithValue("@idUsuario", regularUser.UserId);
+                sqlCommand.Parameters.AddWithValue("@UserId", regularUser.UserId);
 
                 using (SqlDataReader sqlReader = sqlCommand.ExecuteReader())
                 {
                     while (sqlReader.Read())
                     {
-                        User friend = new User();
-                        /*
-                        friend.IdUsuario = (int)sqlReader["idUsuario"];
-                        friend.PrimerNombre = sqlReader["primerNombre"].ToString();
-                        friend.SegundoNombre = sqlReader["segundoNombre"].ToString();
-                        friend.PrimerApellido = sqlReader["primerApellido"].ToString();
-                        friend.SegundoApellido = sqlReader["segundoApellido"].ToString();
+                        RegularUser friend = new RegularUser();
+                        
+                        friend.UserId = (int)sqlReader["idUsuario"];
+                        friend.FirstName = sqlReader["primerNombre"].ToString();
+                        friend.MiddleName = sqlReader["segundoNombre"].ToString();
+                        friend.Surname = sqlReader["primerApellido"].ToString();
+                        friend.SecondSurname = sqlReader["segundoApellido"].ToString();
                         if (Convert.IsDBNull(sqlReader["fotografia"]))
                         {
-                            friend.Fotografia = null;
+                            friend.ProfilePicture = null;
                         }
                         else
                         {
-                            friend.Fotografia = (byte[])sqlReader["fotografia"];
+                            friend.ProfilePicture = (byte[])sqlReader["fotografia"];
                         }
-                        listOfFriends.Add(friend);*/
+                        listOfFriends.Add(friend);
                     }
                 }
             }
-            ManageDatabaseConnection("Close");
+            ManageDatabaseConnection("Close", "regular");
         }
         catch (SqlException sqlException)
         {
@@ -303,18 +332,66 @@ public class UserData : BaseData
         return listOfFriends;
     }
 
+    public List<RegularUser> LoadListOfUsersNotFriends(RegularUser regularUser, string name)
+    {
+        List<RegularUser> listOfUsers = new List<RegularUser>();
+
+        try
+        {
+            //open database connection
+            SqlConnection connection = ManageDatabaseConnection("Open", "regular");
+
+            using (SqlCommand sqlCommand = new SqlCommand("getNotFriendsFromUser", connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@UserId", regularUser.UserId);
+                sqlCommand.Parameters.AddWithValue("@nombre", name);
+
+                using (SqlDataReader sqlReader = sqlCommand.ExecuteReader())
+                {
+                    while (sqlReader.Read())
+                    {
+                        RegularUser user = new RegularUser();
+
+                        user.UserId = (int)sqlReader["idUsuario"];
+                        user.FirstName = sqlReader["primerNombre"].ToString();
+                        user.MiddleName = sqlReader["segundoNombre"].ToString();
+                        user.Surname = sqlReader["primerApellido"].ToString();
+                        user.SecondSurname = sqlReader["segundoApellido"].ToString();
+                        if (Convert.IsDBNull(sqlReader["fotografia"]))
+                        {
+                            user.ProfilePicture = null;
+                        }
+                        else
+                        {
+                            user.ProfilePicture = (byte[])sqlReader["fotografia"];
+                        }
+                        listOfUsers.Add(user);
+                    }
+                }
+            }
+            ManageDatabaseConnection("Close", "regular");
+        }
+        catch (SqlException sqlException)
+        {
+            throw sqlException;
+        }
+
+        return listOfUsers;
+    }
+
     public int InsertFriend(RegularUser user, RegularUser friend)
     {
         int resultID;
 
         try
         {
-            SqlConnection connection = ManageDatabaseConnection("Open");
-            using (SqlCommand sqlCommand = new SqlCommand("addAmigo", connection))
+            SqlConnection connection = ManageDatabaseConnection("Open", "regular");
+            using (SqlCommand sqlCommand = new SqlCommand("addFriend", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.AddWithValue("@idUsuario", user.UserId);
-                sqlCommand.Parameters.AddWithValue("@idAmigo", friend.UserId);
+                sqlCommand.Parameters.AddWithValue("@UserId", user.UserId);
+                sqlCommand.Parameters.AddWithValue("@FriendId", friend.UserId);
 
                 var returnParameter = sqlCommand.Parameters.Add("@ReturnVal", SqlDbType.Int);
                 returnParameter.Direction = ParameterDirection.ReturnValue;
@@ -322,7 +399,36 @@ public class UserData : BaseData
                 sqlCommand.ExecuteNonQuery();
                 resultID = Convert.ToInt32(returnParameter.Value);
             }
-            ManageDatabaseConnection("Close");
+            ManageDatabaseConnection("Close", "regular");
+
+        }
+        catch (SqlException sqlException)
+        {
+            throw sqlException;
+        }
+        //Debug.WriteLine(resultID);
+        return resultID;
+    }
+    public int RemoveFriend(RegularUser user, RegularUser friend)
+    {
+        int resultID;
+
+        try
+        {
+            SqlConnection connection = ManageDatabaseConnection("Open", "regular");
+            using (SqlCommand sqlCommand = new SqlCommand("removeFriend", connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@UserId", user.UserId);
+                sqlCommand.Parameters.AddWithValue("@FriendId", friend.UserId);
+
+                var returnParameter = sqlCommand.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                sqlCommand.ExecuteNonQuery();
+                resultID = Convert.ToInt32(returnParameter.Value);
+            }
+            ManageDatabaseConnection("Close", "regular");
 
         }
         catch (SqlException sqlException)

@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ControlPanel.aspx.cs" Inherits="ControlPanel" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Donations.aspx.cs" Inherits="Donations" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Panel de Control</title>
+    <title>Donaciones</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,15 +47,45 @@
     <form runat="server">
     <div id="wrapper">
         <!-- #include file ="includes\HeaderRegular.inc" -->
-
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Panel de Control</h1>
+                        <h1 class="page-header">Donaciones</h1>
                     </div>
                     <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Nueva Donacion
+                            </div>
+                            <div class="panel-body">
+                                <form role="form">
+                                    <label>Cantidad</label>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-addon">₡</span>
+                                        <asp:TextBox id="amount" type="text" class="form-control" placeholder="Cantidad" required runat="server"></asp:TextBox>
+                                        <span class="input-group-addon">.00</span>
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <label>Validar Contraseña</label>
+                                        <asp:TextBox id="password" type="text" class="form-control" placeholder="Contraseña" required runat="server"></asp:TextBox>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Label ID="Errors" runat="server" Text=" <br> " CssClass="text-danger"></asp:Label>
+                                    </div>
+                                    <asp:Button ID="Donate_btn" runat="server" Text="Donar" OnClick="Donate" class="btn btn-default" />
+                                </form>
+                            </div>
+                            <div class="panel-footer">
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.row -->
             </div>

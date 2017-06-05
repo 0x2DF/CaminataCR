@@ -6,13 +6,13 @@ using System.Web;
 
 public class Point
 {
-    private float longitud;
-    private float latitud;
+    private double longitud;
+    private double latitud;
     private int pos;
     private string comment;
     private byte[] image;
 
-    public float Longitud
+    public double Longitud
     {
         get
         {
@@ -25,7 +25,7 @@ public class Point
         }
     }
 
-    public float Latitud
+    public double Latitud
     {
         get
         {

@@ -131,8 +131,7 @@ idNivelDeDificultad INT NOT NULL FOREIGN KEY REFERENCES NivelDeDificultad(idNive
 idNivelDePrecio INT NOT NULL FOREIGN KEY REFERENCES NivelDePrecio(idNivelDePrecio),
 idNivelDeCalidad INT NOT NULL FOREIGN KEY REFERENCES NivelDeCalidad(idNivelDeCalidad),
 fotografia VARBINARY(MAX),
-comentario VARCHAR(500),
-finalizada BIT NOT NULL
+comentario VARCHAR(500)
 )
 CREATE TABLE Ruta
 (

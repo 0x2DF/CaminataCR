@@ -9,6 +9,14 @@ public partial class ControlPanel : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["REG_USER"] == null)
+        {
+            Response.Redirect("SignInRegular.aspx");
+        }
+        else
+        {
+            RegularUser regularUser = (RegularUser)Session["REG_USER"];
+            LoggedInUsername.Text = regularUser.Account;
+        }
     }
 }

@@ -39,8 +39,12 @@ public partial class SignInRegular : System.Web.UI.Page
         }
         else
         {
-            Errores.Text = errorText;
+            Errors.Text = errorText;
         }
 
+    }
+    protected void SignUp(object sender, EventArgs e)
+    {
+        Response.Redirect("SignUpRegular.aspx");
     }
 }

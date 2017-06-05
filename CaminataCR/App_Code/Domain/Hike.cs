@@ -8,7 +8,7 @@ public class Hike
 {
     private int hikeId;
     private string hikeType;
-    private string dificulty;
+    private string difficulty;
     private string price;
     private string quality;
     private string province;
@@ -17,8 +17,8 @@ public class Hike
 
     private string nameOfLocation;
     private string details;
-    private float longitud;
-    private float latitud;
+    private double longitud;
+    private double latitud;
 
     private DateTime dateTime;
     private byte[] image;
@@ -42,16 +42,16 @@ public class Hike
         }
     }
 
-    public string Dificulty
+    public string Difficulty
     {
         get
         {
-            return dificulty;
+            return difficulty;
         }
 
         set
         {
-            dificulty = value;
+            difficulty = value;
         }
     }
 
@@ -146,7 +146,7 @@ public class Hike
         }
     }
 
-    public float Longitud
+    public double Longitud
     {
         get
         {
@@ -159,7 +159,7 @@ public class Hike
         }
     }
 
-    public float Latitud
+    public double Latitud
     {
         get
         {
