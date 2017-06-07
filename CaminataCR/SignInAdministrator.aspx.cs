@@ -18,10 +18,10 @@ public partial class SignInAdministrator : System.Web.UI.Page
     {
         LoginBusiness lb = new LoginBusiness();
         User user = new User();
-        int rol = 1;
+        int role = 1;
         user.Account = username.Text;
         user.Password = password.Text;
-        user.RoleId = rol;
+        user.RoleId = role;
 
         string errorText = lb.ValidateCredentials(user);
 
