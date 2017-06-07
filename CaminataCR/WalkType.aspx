@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CatalogMaintenance.aspx.cs" Inherits="CatalogMaintenance" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="WalkType.aspx.cs" Inherits="WalkType" %>
 
 <!DOCTYPE html>
 
@@ -34,8 +34,9 @@
 
 </head>
 
-<body style="background: green">
+<body style="background: green" runat="server">
     <form runat="server">
+
         <div id="wrapper">
 
             <!-- Navigation -->
@@ -131,31 +132,67 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header"></h1>
+                            <h1 class="page-header">Tipos de caminata</h1>
                         </div>
-                        <!-- /.col-lg-12 -->
+                        <div class="col-lg-12">
+                            <asp:Button ID="Button1" runat="server" Text="Button" class="btn btn-default" />
+                        </div>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Tipos
+                                </div>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover">
+                                            
+                                            <tbody>
+                                                <tr>
+                                                    <td>Mark</td>
+                                                    <td class="text-center"><asp:Button ID="Button2" runat="server" Text="Editar" class="btn btn-default"  /></td>
+                                                </tr>
+                                                <%--<tr>
+                                                    <td>2</td>
+                                                    <td>Jacob</td>
+                                                    <td>Thornton</td>
+                                                    <td>@fat</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Larry</td>
+                                                    <td>the Bird</td>
+                                                    <td>@twitter</td>
+                                                </tr>--%>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                                <!-- /.panel-
+                            </div>
+                        </div>
                     </div>
                     <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
-            </div>
-            <!-- /#page-wrapper -->
+                            </div>
+                            <!-- /.container-fluid -->
+                        </div>
+                        <!-- /#page-wrapper -->
 
-        </div>
-        <!-- /#wrapper -->
 
-        <!-- jQuery -->
-        <script src="../vendor/jquery/jquery.min.js"></script>
+                    </div>
+                    <!-- /#wrapper -->
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+                    <!-- jQuery -->
+                    <script src="../vendor/jquery/jquery.min.js"></script>
 
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+                    <!-- Bootstrap Core JavaScript -->
+                    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-        <!-- Custom Theme JavaScript -->
-        <script src="../dist/js/sb-admin-2.js"></script>
+                    <!-- Metis Menu Plugin JavaScript -->
+                    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+                    <!-- Custom Theme JavaScript -->
+                    <script src="../dist/js/sb-admin-2.js"></script>
     </form>
 
 </body>
-</html>

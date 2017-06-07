@@ -19,8 +19,9 @@ public class UserData : BaseData
         try
         {
             SqlConnection connection = ManageDatabaseConnection("Open", (user.RoleId == 3 ? "regular" : (user.RoleId == 2 ? "ICT" : "admin")) );
-            using (SqlCommand sqlCommand = new SqlCommand("checkUser", connection))
+            using (SqlCommand sqlCommand = new SqlCommand("dbo.checkUser", connection))
             {
+                Debug.WriteLine(user.RoleId);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 sqlCommand.Parameters.AddWithValue("@account", user.Account);
                 sqlCommand.Parameters.AddWithValue("@password", user.Password);
