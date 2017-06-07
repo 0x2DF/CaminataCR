@@ -34,7 +34,7 @@
 
 </head>
 
-<body>
+<body style="background:green">
 
     <div id="wrapper">
 
