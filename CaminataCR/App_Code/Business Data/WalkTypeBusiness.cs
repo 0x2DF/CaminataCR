@@ -31,4 +31,10 @@ public class WalkTypeBusiness
         }
         return errorText;
     }
+
+    public List<string> getWalkTypes()
+    {
+        List<string> walkTypes = walkTypeData.getWalkTypes();
+        return walkTypes;
+    }
 }

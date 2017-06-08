@@ -136,15 +136,14 @@
                         <div class="col-md-2">
                             <div class="form-group">
                                 <asp:TextBox ID="walkType" placeholder="Tipo de caminata" class="form-control" required runat="server"></asp:TextBox>
-                                
+
                             </div>
                             <div class="form-group">
                                 <asp:Button ID="a" runat="server" Text="Agregar" CssClass="btn btn-success" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" OnClick="CreateWalkType" />
+                            </div>
+                            <div class="form-group">
                                 <asp:Label ID="Errors" runat="server" Text=" <br> " CssClass="text-danger"></asp:Label>
                             </div>
-                                
-                            
-
                         </div>
 
                         <!-- /.col-lg-12 -->

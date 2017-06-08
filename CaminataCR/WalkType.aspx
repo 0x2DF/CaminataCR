@@ -137,14 +137,14 @@
                         <div class="col-lg-12">
                             <asp:Button ID="Button1" runat="server" Text="Button" class="btn btn-success" onClick="addWalktype"/>
                         </div>
-                        <div class="col-md-8 col-md-offset-2">
+                        <div class="col-md-4 col-md-offset-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     Tipos
                                 </div>
                                 <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered table-hover">
+                                    <div id="walkTypeListS" class="table-responsive" runat="server">
+                                        <%--<table class="table table-striped table-bordered table-hover">
 
                                             <tbody>
                                                 <tr>
@@ -152,20 +152,9 @@
                                                     <td class="text-center ">
                                                         <asp:Button ID="Button2" runat="server" Text="Editar" class="btn btn-default" /></td>
                                                 </tr>
-                                                <%--<tr>
-                                                    <td>2</td>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
-                                                </tr>--%>
+                                               
                                             </tbody>
-                                        </table>
+                                        </table>--%>
                                     </div>
                                     <!-- /.table-responsive -->
                                 </div>

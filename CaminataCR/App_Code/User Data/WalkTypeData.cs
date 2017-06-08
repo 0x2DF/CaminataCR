@@ -46,4 +46,35 @@ public class WalkTypeData : BaseData
 
         return error;
     }
+
+    public List<string> getWalkTypes()
+    {
+        List<string> walkTypes = new List<string>();
+        try
+        {
+            //open database connection
+            SqlConnection connection = ManageDatabaseConnection("Open","admin");
+
+            using (SqlCommand sqlCommand = new SqlCommand("getWalkTypes", connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                using (SqlDataReader sqlReader = sqlCommand.ExecuteReader())
+                {
+                    while (sqlReader.Read())
+                    {
+                        string walk = sqlReader["tipoDeCaminata"].ToString();
+                        walkTypes.Add(walk);
+                    }
+                }
+            }
+            ManageDatabaseConnection("Close","admin");
+        }
+        catch (SqlException sqlException)
+        {
+            throw sqlException;
+        }
+
+        return walkTypes;
+    }
 }
