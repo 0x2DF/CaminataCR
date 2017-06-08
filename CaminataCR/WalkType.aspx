@@ -84,19 +84,19 @@
                                 <a href="#" style="color: white; background: green"><i class="fa fa-sitemap fa-fw"></i>Mantenimiento catálogos<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#" style="color: white; background: green">Tipo de caminata</a>
+                                        <a href="WalkType.aspx" style="color: white; background: green">Tipo de caminata</a>
                                     </li>
                                     <li>
                                         <a href="#" style="color: white; background: green">Niveles <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="#" style="color: white; background: green">Dificultad</a>
+                                                <a href="DificultyLevel.aspx" style="color: white; background: green">Dificultad</a>
                                             </li>
                                             <li>
-                                                <a href="#" style="color: white; background: green">Precio</a>
+                                                <a href="PriceLevel.aspx" style="color: white; background: green">Precio</a>
                                             </li>
                                             <li>
-                                                <a href="#" style="color: white; background: green">Calidad</a>
+                                                <a href="QualityLevel.aspx" style="color: white; background: green">Calidad</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -105,13 +105,13 @@
                                         <a href="#" style="color: white; background: green">Usuario <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="#" style="color: white; background: green">Administradores</a>
+                                                <a href="UserAdministrator.aspx" style="color: white; background: green">Administradores</a>
                                             </li>
                                             <li>
-                                                <a href="#" style="color: white; background: green">ICT</a>
+                                                <a href="UserICT.aspx" style="color: white; background: green">ICT</a>
                                             </li>
                                             <li>
-                                                <a href="#" style="color: white; background: green">Regulares</a>
+                                                <a href="UserRegular.aspx" style="color: white; background: green">Regulares</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -145,11 +145,12 @@
                                 <div class="panel-body">
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered table-hover">
-                                            
+
                                             <tbody>
                                                 <tr>
                                                     <td>Mark</td>
-                                                    <td class="text-center"><asp:Button ID="Button2" runat="server" Text="Editar" class="btn btn-default"  /></td>
+                                                    <td class="text-center ">
+                                                        <asp:Button ID="Button2" runat="server" Text="Editar" class="btn btn-default" /></td>
                                                 </tr>
                                                 <%--<tr>
                                                     <td>2</td>
@@ -180,19 +181,22 @@
 
 
                     </div>
-                    <!-- /#wrapper -->
+                </div>
+            </div>
 
-                    <!-- jQuery -->
-                    <script src="../vendor/jquery/jquery.min.js"></script>
+            <!-- /#wrapper -->
 
-                    <!-- Bootstrap Core JavaScript -->
-                    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+            <!-- jQuery -->
+            <script src="../vendor/jquery/jquery.min.js"></script>
 
-                    <!-- Metis Menu Plugin JavaScript -->
-                    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+            <!-- Bootstrap Core JavaScript -->
+            <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-                    <!-- Custom Theme JavaScript -->
-                    <script src="../dist/js/sb-admin-2.js"></script>
+            <!-- Metis Menu Plugin JavaScript -->
+            <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+            <!-- Custom Theme JavaScript -->
+            <script src="../dist/js/sb-admin-2.js"></script>
     </form>
 
 </body>
