@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AddWalkType.aspx.cs" Inherits="AddWalkType" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="EditWalkType.aspx.cs" Inherits="EditWalkType" %>
 
 <!DOCTYPE html>
 
@@ -131,21 +131,28 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Agregar tipo de caminata</h1>
+                            <h1 class="page-header">Editar tipo de caminata</h1>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <div class="form-group">
+                                <asp:Label ID="Label2" runat="server" Text="Tipo de caminata"></asp:Label>
                                 <asp:TextBox ID="walkType" placeholder="Tipo de caminata" class="form-control" required runat="server"></asp:TextBox>
-
                             </div>
                             <div class="form-group">
-                                <asp:Button ID="a" runat="server" Text="Agregar" CssClass="btn btn-outline btn-success" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" OnClick="CreateWalkType" />
+                                <asp:Label ID="Label1" runat="server" Text="Activo"></asp:Label>
+                                <div class="checkbox">
+                                    <label>
+                                        <asp:CheckBox ID="CheckBox1" runat="server" />
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <asp:Button ID="a" runat="server" Text="Agregar" CssClass="btn btn-outline btn-success" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" />
                             </div>
                             <div class="form-group">
                                 <asp:Label ID="Errors" runat="server" Text=" <br> " CssClass="text-danger"></asp:Label>
                             </div>
                         </div>
-
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->

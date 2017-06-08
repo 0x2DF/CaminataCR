@@ -36,9 +36,9 @@ public partial class WalkType : System.Web.UI.Page
 
             TableRow tableRow = new TableRow();
             TableCell tableCell1 = new TableCell();
-            tableCell1.Attributes["class"] = "col-md-2 text-center";
+            tableCell1.Attributes["class"] = "col-md-3 text-center";
             TableCell tableCell2 = new TableCell();
-            tableCell2.Attributes["class"] = "col-md-2 text-center";
+            tableCell2.Attributes["class"] = "col-md-3 text-center";
 
             Label labelWalkType = new Label();
             labelWalkType.Text = walkTypeName;   
@@ -60,7 +60,7 @@ public partial class WalkType : System.Web.UI.Page
     public Button addButton(string walkType)
     {
         Button btn = new Button();
-        btn.Attributes["class"] = "btn btn-success;";
+        btn.Attributes["class"] = "btn btn-outline btn-success";
         btn.Click += new System.EventHandler(editWalkType);
         btn.Text = "Editar";
         btn.ID = walkType;
@@ -69,7 +69,11 @@ public partial class WalkType : System.Web.UI.Page
 
     protected void editWalkType(object sender, EventArgs e)
     {
-        Debug.Write("hola");
+        Button btn = (Button)sender;
+        string name = btn.ID;
+        Session["EditWalk"] = name;
+        Debug.WriteLine(name);
+        Response.Redirect("EditWalkType.aspx");
     }
 
     protected void addWalktype(object sender, EventArgs e)

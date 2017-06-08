@@ -135,7 +135,7 @@
                             <h1 class="page-header">Tipos de caminata</h1>
                         </div>
                         <div class="col-lg-12">
-                            <asp:Button ID="Button1" runat="server" Text="Button" class="btn btn-success" onClick="addWalktype"/>
+                            <asp:Button ID="Button1" runat="server" Text="Button" class="btn btn-outline btn-success" OnClick="addWalktype" />
                         </div>
                         <div class="col-md-4 col-md-offset-4">
                             <div class="panel panel-default">
@@ -143,32 +143,13 @@
                                     Tipos
                                 </div>
                                 <div class="panel-body">
-                                    <div id="walkTypeListS" class="table-responsive" runat="server">
-                                        <%--<table class="table table-striped table-bordered table-hover">
-
-                                            <tbody>
-                                                <tr>
-                                                    <td>Mark</td>
-                                                    <td class="text-center ">
-                                                        <asp:Button ID="Button2" runat="server" Text="Editar" class="btn btn-default" /></td>
-                                                </tr>
-                                               
-                                            </tbody>
-                                        </table>--%>
-                                    </div>
+                                    <div id="walkTypeListS" class="table-responsive" runat="server"></div>
                                     <!-- /.table-responsive -->
                                 </div>
-                                <!-- /.panel-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
                             </div>
                             <!-- /.container-fluid -->
                         </div>
                         <!-- /#page-wrapper -->
-
-
                     </div>
                 </div>
             </div>
