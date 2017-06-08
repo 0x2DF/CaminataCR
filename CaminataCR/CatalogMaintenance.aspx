@@ -83,19 +83,19 @@
                                 <a href="#" style="color: white; background: green"><i class="fa fa-sitemap fa-fw"></i>Mantenimiento catálogos<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#" style="color: white; background: green">Tipo de caminata</a>
+                                        <a href="WalkType.aspx" style="color: white; background: green">Tipo de caminata</a>
                                     </li>
                                     <li>
                                         <a href="#" style="color: white; background: green">Niveles <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="#" style="color: white; background: green">Dificultad</a>
+                                                <a href="DificultyLevel.aspx" style="color: white; background: green">Dificultad</a>
                                             </li>
                                             <li>
-                                                <a href="#" style="color: white; background: green">Precio</a>
+                                                <a href="PriceLevel.aspx" style="color: white; background: green">Precio</a>
                                             </li>
                                             <li>
-                                                <a href="#" style="color: white; background: green">Calidad</a>
+                                                <a href="QualityLevel.aspx" style="color: white; background: green">Calidad</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->
@@ -104,13 +104,13 @@
                                         <a href="#" style="color: white; background: green">Usuario <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="#" style="color: white; background: green">Administradores</a>
+                                                <a href="UserAdministrator.aspx" style="color: white; background: green">Administradores</a>
                                             </li>
                                             <li>
-                                                <a href="#" style="color: white; background: green">ICT</a>
+                                                <a href="UserICT.aspx" style="color: white; background: green">ICT</a>
                                             </li>
                                             <li>
-                                                <a href="#" style="color: white; background: green">Regulares</a>
+                                                <a href="UserRegular.aspx" style="color: white; background: green">Regulares</a>
                                             </li>
                                         </ul>
                                         <!-- /.nav-third-level -->

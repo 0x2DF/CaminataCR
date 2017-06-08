@@ -11,4 +11,9 @@ public partial class WalkType : System.Web.UI.Page
     {
 
     }
+
+    protected void addWalktype(object sender, EventArgs e)
+    {
+        Response.Redirect("AddWalkType.aspx");
+    }
 }
