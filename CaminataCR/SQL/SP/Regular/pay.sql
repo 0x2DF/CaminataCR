@@ -11,8 +11,8 @@ BEGIN
 	SET @totalDonation *= 0.1
 
 	INSERT INTO CierreDiario(idUsuario, monto, fechaHora)
-		SELECT U.idUsuario, @totalDonation * ((Hiker.Cantidad * 100) / @totalDonation) / 100, CONVERT(DATE, GETDATE())
-		FROM Usuario U
+		SELECT R.idUsuario, @totalDonation * ((Hiker.Cantidad * 100) / @totalDonation) / 100, CONVERT(DATE, GETDATE())
+		FROM Regular R
 			INNER JOIN (
 				SELECT UC.idUsuario, COUNT(*) Cantidad
 				FROM Likes L, UsuarioPorCaminata UC
@@ -20,5 +20,5 @@ BEGIN
 					  CONVERT(DATE, L.fechaHora) = CONVERT(DATE, GETDATE())
 				GROUP BY UC.idUsuario
 			) Hiker
-				ON Hiker.idUsuario = U.idUsuario
+				ON Hiker.idUsuario = R.idUsuario
 END
