@@ -167,7 +167,7 @@ CREATE TABLE Likes
 idUsuarioPorCaminata INT NOT NULL FOREIGN KEY REFERENCES UsuarioPorCaminata(idUsuarioPorCaminata),
 idUsuario INT NOT NULL FOREIGN KEY REFERENCES Regular (idUsuario),
 fechaHora DATETIME NOT NULL,
-CONSTRAINT PK_Likes PRIMARY KEY (idUsuario, idUsuarioPorCaminata)
+CONSTRAINT PK_Likes PRIMARY KEY (idUsuarioPorCaminata)
 )
 
 CREATE TABLE Bitacora
