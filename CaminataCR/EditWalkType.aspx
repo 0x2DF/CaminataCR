@@ -136,6 +136,9 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <asp:Label ID="Label2" runat="server" Text="Tipo de caminata"></asp:Label>
+
+                            </div>
+                            <div class="form-group">
                                 <asp:TextBox ID="walkType" placeholder="Tipo de caminata" class="form-control" required runat="server"></asp:TextBox>
                             </div>
                             <div class="form-group">
@@ -147,8 +150,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <asp:Button ID="a" runat="server" Text="Agregar" CssClass="btn btn-outline btn-success" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" />
+                                <div class="row">
+                                    <asp:Button ID="a" runat="server" Text="Agregar" CssClass="btn btn-success btn-outline" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" OnClick="submitEditWalkType" />
+                                    <asp:Button ID="Button1" runat="server" Text="Eliminar" CssClass="btn btn-success btn-outline" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" OnClick="deleteWalkType"  />
+                                </div>
                             </div>
+
                             <div class="form-group">
                                 <asp:Label ID="Errors" runat="server" Text=" <br> " CssClass="text-danger"></asp:Label>
                             </div>

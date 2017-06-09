@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DificultyLevel.aspx.cs" Inherits="DificultyLevel" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AddDificultyLevel.aspx.cs" Inherits="addDificultyLevel" %>
 
 <!DOCTYPE html>
 
@@ -131,22 +131,23 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Niveles de dificultad</h1>
+                            <h1 class="page-header"></h1>
                         </div>
-                        <div class="col-lg-12">
-                            <asp:Button ID="Button1" runat="server" Text="Agregar" class="btn btn-outline btn-success" OnClick="addDificultyLevel"/>
                         </div>
-                        <div class="col-md-4 col-md-offset-4">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Niveles
-                                </div>
-                                <div class="panel-body">
-                                    <div id="dificultyLevelS" class="table-responsive" runat="server"></div>
-                                    <!-- /.table-responsive -->
-                                </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <asp:Label ID="Label1" runat="server" Text="Nivel de dificultad"></asp:Label>
                             </div>
-                            <!-- /.container-fluid -->
+                            <div class="form-group">
+                                <asp:TextBox ID="dificulty" placeholder="Nivel de dificultad" class="form-control" required runat="server"></asp:TextBox>
+
+                            </div>
+                            <div class="form-group">
+                                <asp:Button ID="a" runat="server" Text="Agregar" CssClass="btn btn-outline btn-success" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" OnClick="CreateWalkType" />
+                            </div>
+                            <div class="form-group">
+                                <asp:Label ID="Errors" runat="server" Text=" <br> " CssClass="text-danger"></asp:Label>
+                            </div>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>

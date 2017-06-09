@@ -72,7 +72,6 @@ public partial class WalkType : System.Web.UI.Page
         Button btn = (Button)sender;
         string name = btn.ID;
         Session["EditWalk"] = name;
-        Debug.WriteLine(name);
         Response.Redirect("EditWalkType.aspx");
     }
 

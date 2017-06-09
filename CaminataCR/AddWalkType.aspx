@@ -135,6 +135,9 @@
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
+                                <asp:Label ID="Label1" runat="server" Text="Tipo de caminata"></asp:Label>
+                            </div>
+                            <div class="form-group">
                                 <asp:TextBox ID="walkType" placeholder="Tipo de caminata" class="form-control" required runat="server"></asp:TextBox>
 
                             </div>

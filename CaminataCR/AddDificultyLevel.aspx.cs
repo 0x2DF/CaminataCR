@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class AddWalkType : System.Web.UI.Page
+public partial class addDificultyLevel : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -14,20 +14,19 @@ public partial class AddWalkType : System.Web.UI.Page
 
     protected void CreateWalkType(object sender, EventArgs e)
     {
-        WalkTypeBusiness business = new WalkTypeBusiness();
+        DificultyLevelBusiness business = new DificultyLevelBusiness();
 
-        string newWalkType = walkType.Text;
+        string newDificultyLevel = dificulty.Text;
         int state = 1;
 
-        string error = business.insertWalkType(newWalkType, state);
+        string error = business.insertDificultyLevel(newDificultyLevel, state);
         if (error != null)
         {
             Errors.Text = error;
         }
         else
         {
-            Response.Redirect("Walktype.aspx");
+            Response.Redirect("DificultyLevel.aspx");
         }
-        
     }
 }

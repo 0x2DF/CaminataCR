@@ -135,7 +135,7 @@
                             <h1 class="page-header">Tipos de caminata</h1>
                         </div>
                         <div class="col-lg-12">
-                            <asp:Button ID="Button1" runat="server" Text="Button" class="btn btn-outline btn-success" OnClick="addWalktype" />
+                            <asp:Button ID="Button1" runat="server" Text="Agregar" class="btn btn-outline btn-success" OnClick="addWalktype" />
                         </div>
                         <div class="col-md-4 col-md-offset-4">
                             <div class="panel panel-default">

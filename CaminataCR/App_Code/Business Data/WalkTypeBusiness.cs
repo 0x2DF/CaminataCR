@@ -13,9 +13,9 @@ public class WalkTypeBusiness
     {
     }
 
-    public string insertWalkType(string newWalkType)
+    public string insertWalkType(string newWalkType, int state)
     {
-        int insertingError = walkTypeData.InsertWalkType(newWalkType);
+        int insertingError = walkTypeData.InsertWalkType(newWalkType, state);
         string errorText = "";
         switch (insertingError)
         {
@@ -30,6 +30,18 @@ public class WalkTypeBusiness
                 break;
         }
         return errorText;
+    }
+
+    public string editWalkType(string oldWalkType,string newWalkType, int state)
+    {
+        deleteWalkType(oldWalkType);
+        string errorText = insertWalkType(newWalkType, state);
+        return errorText;
+    }
+
+    public void deleteWalkType(string walkType)
+    {
+        walkTypeData.deleteWalkType(walkType);
     }
 
     public List<string> getWalkTypes()

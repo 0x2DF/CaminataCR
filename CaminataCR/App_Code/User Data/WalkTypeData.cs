@@ -18,7 +18,7 @@ public class WalkTypeData : BaseData
 
     }
 
-    public int InsertWalkType(string walkType)
+    public int InsertWalkType(string walkType, int state)
     {
         int error = 0;
         try
@@ -28,6 +28,7 @@ public class WalkTypeData : BaseData
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 sqlCommand.Parameters.AddWithValue("@walkType", walkType);
+                sqlCommand.Parameters.AddWithValue("@state", state);
 
                 var returnParameter = sqlCommand.Parameters.Add("@error", SqlDbType.Int);
                 returnParameter.Direction = ParameterDirection.ReturnValue;
@@ -76,5 +77,27 @@ public class WalkTypeData : BaseData
         }
 
         return walkTypes;
+    }
+
+    public void deleteWalkType(string walkType)
+    {
+        try
+        {
+            SqlConnection connection = ManageDatabaseConnection("Open", ("admin"));
+            using (SqlCommand sqlCommand = new SqlCommand("dbo.deleteWalkType", connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@walkType", walkType);              
+
+                sqlCommand.ExecuteNonQuery();
+
+            }
+            ManageDatabaseConnection("Close", ("admin"));
+
+        }
+        catch (SqlException sqlException)
+        {
+            throw sqlException;
+        }
     }
 }
