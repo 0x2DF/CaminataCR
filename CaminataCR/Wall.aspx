@@ -49,14 +49,9 @@
         <!-- #include file ="includes\HeaderRegular.inc" -->
         <!-- Page Content -->
         <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Muro</h1>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.row -->
+            <div runat="server" class="container-fluid" id="rowContainer">
+                
+                
             </div>
             <!-- /.container-fluid -->
         </div>

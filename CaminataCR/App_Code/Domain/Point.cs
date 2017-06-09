@@ -6,6 +6,7 @@ using System.Web;
 
 public class Point
 {
+    private int pointId;
     private double longitud;
     private double latitud;
     private int pos;
@@ -74,6 +75,19 @@ public class Point
         set
         {
             image = value;
+        }
+    }
+
+    public int PointId
+    {
+        get
+        {
+            return pointId;
+        }
+
+        set
+        {
+            pointId = value;
         }
     }
 

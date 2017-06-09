@@ -13,15 +13,11 @@ public partial class SearchFriends : System.Web.UI.Page
         {
             Response.Redirect("SignInRegular.aspx");
         }
-        else
-        {
-            RegularUser regularUser = (RegularUser)Session["REG_USER"];
-            LoggedInUsername.Text = regularUser.Account;
-        }
 
         if(IsPostBack)
         {
             RegularUser regularUser = (RegularUser)Session["REG_USER"];
+            LoggedInUsername.Text = regularUser.Account;
             if(regularUser.ListOfFriends != null)
             {
                 displayUsers(regularUser);

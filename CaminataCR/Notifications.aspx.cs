@@ -17,8 +17,8 @@ public partial class Notifications : System.Web.UI.Page
         {
             Response.Redirect("Wall.aspx");
         }
-        else
-        { 
+        if (!IsPostBack)
+        {
             RegularUser regularUser = (RegularUser)Session["REG_USER"];
             Notification notification = (Notification)Session["NOTIFICATION"];
 

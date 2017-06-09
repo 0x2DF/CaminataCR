@@ -13,10 +13,18 @@ public partial class ControlPanel : System.Web.UI.Page
         {
             Response.Redirect("SignInRegular.aspx");
         }
-        else
+        if (!IsPostBack)
         {
             RegularUser regularUser = (RegularUser)Session["REG_USER"];
             LoggedInUsername.Text = regularUser.Account;
+            if (regularUser.ProfilePicture == null)
+            {
+                //ImageUser.Attributes["src"] = "/css/images/defaultThumb.png";
+            }
+            else
+            {
+                //ImageUser.Attributes["src"] = "data:Image/png;base64," + Convert.ToBase64String(regularUser.ProfilePicture);
+            }
         }
     }
 }

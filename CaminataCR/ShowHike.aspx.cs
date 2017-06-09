@@ -11,6 +11,4 @@ public partial class ShowHike : System.Web.UI.Page
     {
 
     }
-    //List of routes on this hike
-    //Use route, create new route on this hike
 }

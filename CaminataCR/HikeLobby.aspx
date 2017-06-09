@@ -99,15 +99,65 @@
                                             center: uluru
                                         });
 
-                                        var marker = new google.maps.Marker({
-                                            position: uluru,
-                                            map: map
-                                        });
+                                        // Longitud(s)
+                                        var contador=0;
+                                        var cont = [];
+                                        var a = "<%=sJSON%>";
+                                        var temp="";
+                                        for (var i = 1; i < a.length-1; i++) {
+                                            if (a[i] == ',') {
+                                                cont[contador] = temp;
+                                                temp = "";
+                                                contador = contador + 1;
+                                            } else {
+                                                temp = temp + a[i];
+
+                                            }
+                                        }
+                                        cont[contador] = temp;
+
+                                        // Latitud(s)
+                                        contador=0;
+                                        var contLat = [];
+                                        var dataLat = "<%=sJSON2%>";
+                                        temp="";
+
+                                        for (var i = 1; i < dataLat.length - 1; i++) {
+                                            if (dataLat[i] == ',') {
+                                                contLat[contador] = temp;
+                                                temp = "";
+                                                contador = contador + 1;
+                                            }
+                                            else {
+                                                temp = temp + dataLat[i];
+                                            }
+
+                                        }
+                                        contLat[contador] = temp;
+    
+                                        var count = "<%=numMarcadores%>";
+
+                                        // Display
+                                        for (var i = 0; i < count; i++) {
+                                            var longitud = parseFloat(cont[i]);
+                                            var latitud = parseFloat(contLat[i]);
+                                            var uluru2 = { lat: latitud, lng: longitud };
+
+                                            var marker = new google.maps.Marker({
+                                                position: uluru2,
+                                                map: map
+                                            });
+                                        }
 
                                         google.maps.event.addListener(map, 'click', function (event) {
-                                            alert("Latitude: " + event.latLng.lat() + " " + ", longitude: " + event.latLng.lng());
-                                        });
+                                            alert("[SET] Latitude: " + event.latLng.lat() + " " + ", longitude: " + event.latLng.lng());
+                                            document.getElementById("tb_filter_latitud").value = event.latLng.lat();
+                                            document.getElementById("tb_filter_longitud").value = event.latLng.lng();
 
+                                            document.getElementById("tb_init_latitud").value = event.latLng.lat();
+                                            document.getElementById("tb_init_longitud").value = event.latLng.lng();
+                                        });
+                                        
                                         // Zoom to 9 when clicking on marker
                                         google.maps.event.addListener(marker, 'click', function () {
                                             map.setZoom(9);
@@ -128,7 +178,7 @@
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
-                                <div class="list-group">
+                                <div runat="server" id="hikeFilterContainer" class="list-group">
 
                                     <!-- Caminatas -->
 
@@ -154,7 +204,7 @@
 				                                <a data-toggle="collapse" data-parent="#accordion" href="#Filter"><i class="fa fa-filter fa-fw"></i> Filtrar Caminata</a>
 			                                </h4>
 		                                </div>
-		                                <div id="Filter" class="panel-collapse collapse in">
+		                                <div id="Filter" class="panel-collapse collapse">
 			                                <div class="panel-body">
 				                                <div class="list-group">
 					                                <div class="row">
@@ -170,26 +220,33 @@
 									                                <asp:label runat="server" class="checkbox-inline">
                                                                          <asp:CheckBox runat="server" ID="cb_filter_direction"></asp:CheckBox> <asp:label runat="server"> Direccion Exacta</asp:label>
                                                                     </asp:label>
-
-                                                                    <asp:DropDownList ID="dd_filter_province" runat="server" class="form-control" Autopostback=true SelectedIndexChanged="FillFilterCanton">
-                                                                        <asp:ListItem Text="Provincia" Value="0" /> 
+                                                                    <asp:DropDownList ID="dd_filter_province" runat="server" class="form-control">
                                                                     </asp:DropDownList>
-                                                                    <br />
-                                                                    <asp:DropDownList ID="dd_filter_canton" runat="server" class="form-control" Autopostback=true SelectedIndexChanged="FillFilterCanton">
-                                                                        <asp:ListItem Text="Canton" Value="0" /> 
+                                                                     <br />
+                                                                    <asp:Button ID="btn_filter_canton" runat="server" Text="Llenar" OnClick="FillFilterCanton" class="btn btn-default" causesvalidation="false"/>
+                                                                    <br /><br />
+                                                                    <asp:DropDownList ID="dd_filter_canton" runat="server" class="form-control">
                                                                     </asp:DropDownList>
+                                                                    <asp:RequiredFieldValidator id="RFV_filter_Canton"
+                                                                        controltovalidate="dd_filter_canton"
+                                                                        validationgroup="dropdown"
+                                                                        errormessage="Seleccione un canton primero."
+                                                                        ForeColor="Red"
+                                                                        runat="Server">
+                                                                    </asp:RequiredFieldValidator>
                                                                     <br />
+                                                                    <asp:Button ID="btn_filter_distrito" runat="server" Text="Llenar" OnClick="FillFilterDistrict" class="btn btn-default" causesvalidation="true" ValidationGroup="dropdown"/>
+                                                                    <br /><br />
                                                                     <asp:DropDownList ID="dd_filter_district" runat="server" class="form-control">
-                                                                        <asp:ListItem Text="Distrito" Value="0" /> 
                                                                     </asp:DropDownList>
 								                                </div>
 								                                <div class="form-group">
 									                                <asp:label runat="server" class="checkbox-inline">
                                                                          <asp:CheckBox runat="server" ID="cb_filter_initpoint"></asp:CheckBox> <asp:label runat="server"> Punto de Partida</asp:label>
                                                                     </asp:label>
-                                                                    <asp:TextBox ID="cb_filter_longitud" class="form-control" placeholder="Longitud" runat="server"></asp:TextBox>
+                                                                    <asp:TextBox ID="tb_filter_longitud" class="form-control" placeholder="Longitud" runat="server"></asp:TextBox>
 									                                <br />
-                                                                    <asp:TextBox ID="cb_filter_latitud" class="form-control" placeholder="Latitud" runat="server"></asp:TextBox>
+                                                                    <asp:TextBox ID="tb_filter_latitud" class="form-control" placeholder="Latitud" runat="server"></asp:TextBox>
 								                                </div>
 
 								                                <div class="form-group">
@@ -223,6 +280,10 @@
 									                                <asp:DropDownList ID="dd_filter_qualitylevel" runat="server" class="form-control">
                                                                     </asp:DropDownList>
 								                                </div>
+
+                                                                <div class="form-group">
+                                                                    <asp:Label ID="FilterErrors" runat="server" Text="" CssClass="text-danger"></asp:Label>
+                                                                </div>
 							                                </div>
 						                                </div>
 						                                <!-- /.col-lg-6 (nested) -->
@@ -258,7 +319,7 @@
                                                             </div>
 								                            <div class="form-group">
 									                            <asp:label runat="server">Direccion exacta</asp:label>
-									                            <asp:DropDownList ID="dd_init_province" runat="server" class="form-control" Autopostback=true SelectedIndexChanged="FillInitCanton">
+									                            <asp:DropDownList ID="dd_init_province" runat="server" class="form-control">
                                                                 </asp:DropDownList>
 									                            <asp:RequiredFieldValidator id="RFV_province"
                                                                     controltovalidate="dd_init_province"
@@ -267,16 +328,29 @@
                                                                     ForeColor="Red"
                                                                     runat="Server">
                                                                 </asp:RequiredFieldValidator>
-									                            <asp:DropDownList ID="dd_init_canton" runat="server" class="form-control" Autopostback=true SelectedIndexChanged="FillInitDistrict">
-                                                                </asp:DropDownList>
-									                            <asp:RequiredFieldValidator id="RFV_canton"
+                                                                <br />
+                                                                <asp:Button ID="btn_init_canton" runat="server" Text="Llenar" OnClick="FillInitCanton" class="btn btn-default" causesvalidation="false"/>
+									                            <br />
+                                                                <asp:RequiredFieldValidator id="RFV_canton"
                                                                     controltovalidate="dd_init_canton"
                                                                     validationgroup="init"
                                                                     errormessage="Ingrese el canton de la Caminata."
                                                                     ForeColor="Red"
                                                                     runat="Server">
                                                                 </asp:RequiredFieldValidator>
-									                            <asp:DropDownList ID="dd_init_district" runat="server" class="form-control">
+                                                                <asp:DropDownList ID="dd_init_canton" runat="server" class="form-control">
+                                                                </asp:DropDownList>
+                                                                <asp:RequiredFieldValidator id="RFV_init_canton"
+	                                                                controltovalidate="dd_init_canton"
+	                                                                validationgroup="dropdown_init"
+	                                                                errormessage="Seleccione un canton primero."
+	                                                                ForeColor="Red"
+	                                                                runat="Server">
+                                                                </asp:RequiredFieldValidator>
+                                                                <br />
+                                                                <asp:Button ID="btn_init_district" runat="server" Text="Llenar" OnClick="FillInitDistrict" class="btn btn-default" causesvalidation="true" ValidationGroup="dropdown_init"/>
+									                            <br /><br />
+                                                                <asp:DropDownList ID="dd_init_district" runat="server" class="form-control">
                                                                 </asp:DropDownList>
 									                            <asp:RequiredFieldValidator id="RFV_district"
                                                                     controltovalidate="dd_init_district"
@@ -347,7 +421,7 @@
 								                            </div>
 
                                                             <div class="form-group">
-                                                                <asp:Label ID="Errors" runat="server" Text="" CssClass="text-danger"></asp:Label>
+                                                                <asp:Label ID="InitErrors" runat="server" Text="" CssClass="text-danger"></asp:Label>
                                                             </div>
 						                                </div>
 						                                <!-- /.col-lg-6 (nested) -->

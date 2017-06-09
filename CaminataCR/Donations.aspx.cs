@@ -15,7 +15,7 @@ public partial class Donations : System.Web.UI.Page
         {
             Response.Redirect("SignInRegular.aspx");
         }
-        else
+        if (!IsPostBack)
         {
             RegularUser regularUser = (RegularUser)Session["REG_USER"];
             LoggedInUsername.Text = regularUser.Account;

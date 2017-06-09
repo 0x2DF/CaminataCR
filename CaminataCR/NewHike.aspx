@@ -91,7 +91,7 @@
                             <!-- /.panel-heading -->
                             <div class="panel-body">
                                 <div id="map" class="auto-style8"></div>
-                                <script>
+                               <script>
                                     function initMap(arreglo) {
             
                                         var uluru = {lat: 10, lng: -84};
@@ -100,15 +100,74 @@
                                             center: uluru
                                         });
 
-                                        var marker = new google.maps.Marker({
-                                            position: uluru,
-                                            map: map
-                                        });
+                                        // Longitud(s)
+                                        var contador=0;
+                                        var cont = [];
+                                        var a = "<%=sJSON%>";
+                                        var temp="";
+                                        for (var i = 1; i < a.length-1; i++) {
+                                            if (a[i] == ',') {
+                                                cont[contador] = temp;
+                                                temp = "";
+                                                contador = contador + 1;
+                                            } else {
+                                                temp = temp + a[i];
 
+                                            }
+                                        }
+                                        cont[contador] = temp;
+
+                                        // Latitud(s)
+                                        contador=0;
+                                        var contLat = [];
+                                        var dataLat = "<%=sJSON2%>";
+                                        temp="";
+
+                                        for (var i = 1; i < dataLat.length - 1; i++) {
+                                            if (dataLat[i] == ',') {
+                                                contLat[contador] = temp;
+                                                temp = "";
+                                                contador = contador + 1;
+                                            }
+                                            else {
+                                                temp = temp + dataLat[i];
+                                            }
+
+                                        }
+                                        contLat[contador] = temp;
+    
+                                        var count = "<%=numMarcadores%>";
+                                        var ruta = [];
+                                        // Display
+                                        for (var i = 0; i < count; i++) {
+                                            var longitud = parseFloat(cont[i]);
+                                            var latitud = parseFloat(contLat[i]);
+                                            var uluru2 = { lat: latitud, lng: longitud };
+                                            ruta[i] = uluru2;
+
+                                            var marker = new google.maps.Marker({
+                                                position: uluru2,
+                                                map: map,
+                                                label: i.toString()
+                                            });
+                                        }
+                                        if (count >= 2)
+                                        {
+                                            var path = new google.maps.Polyline({
+                                                path: ruta,
+                                                geodesic: true,
+                                                strokeColor: '#FF0000',
+                                                strokeOpacity: 1.0,
+                                                strokeWeight: 2
+                                            });
+                                        }
+                                        
                                         google.maps.event.addListener(map, 'click', function (event) {
-                                            alert("Latitude: " + event.latLng.lat() + " " + ", longitude: " + event.latLng.lng());
+                                            alert("[SET] Latitude: " + event.latLng.lat() + " " + ", longitude: " + event.latLng.lng());
+                                            document.getElementById("tb_latitud").value = event.latLng.lat();
+                                            document.getElementById("tb_longitud").value = event.latLng.lng();
                                         });
-
+                                        
                                         // Zoom to 9 when clicking on marker
                                         google.maps.event.addListener(marker, 'click', function () {
                                             map.setZoom(9);
@@ -249,8 +308,8 @@
                                                                 </asp:RequiredFieldValidator>
 								                            </div>
 								                            <div class="form-group">
-									                            <asp:label runat="server">Direccion exacta</asp:label>
-									                            <asp:TextBox ID="tb_end_commentary" class="form-control" rows="3" placeholder="Detalles" TextMode="multiline" runat="server"></asp:TextBox>
+									                            <asp:label runat="server">Comentario</asp:label>
+									                            <asp:TextBox ID="tb_end_commentary" class="form-control" rows="3" placeholder="Comentario" TextMode="multiline" runat="server"></asp:TextBox>
                                                                 <asp:RequiredFieldValidator id="RFV_end_commentary"
                                                                     controltovalidate="tb_end_commentary"
                                                                     validationgroup="end"

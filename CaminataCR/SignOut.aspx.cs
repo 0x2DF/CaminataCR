@@ -18,6 +18,13 @@ public partial class SignOut : System.Web.UI.Page
         if (Session["REG_USER"] != null)
         {
             Session["REG_USER"] = null;
+
+            if (Session["HIKE"] != null)
+            {
+                Session["HIKE"] = null;
+                Response.Redirect("SignInRegular.aspx");
+            }
+
             Response.Redirect("SignInRegular.aspx");
         }
 

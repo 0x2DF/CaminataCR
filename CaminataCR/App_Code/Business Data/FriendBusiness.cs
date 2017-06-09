@@ -10,7 +10,7 @@ public class FriendBusiness
     public FriendBusiness()
     {
     }
-
+    
     public void LoadHikesOfFriends(ref RegularUser regularUser)
     {
         HikeBusiness hb = new HikeBusiness();

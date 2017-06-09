@@ -26,7 +26,7 @@ public class Hike
     private bool finished;
 
     private Route route;
-
+    private List<Route> listOfRoutes;
     private int likes;
 
     public string HikeType
@@ -260,6 +260,19 @@ public class Hike
         set
         {
             hikeId = value;
+        }
+    }
+
+    public List<Route> ListOfRoutes
+    {
+        get
+        {
+            return listOfRoutes;
+        }
+
+        set
+        {
+            listOfRoutes = value;
         }
     }
 

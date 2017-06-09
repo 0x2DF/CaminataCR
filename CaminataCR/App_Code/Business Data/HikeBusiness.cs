@@ -14,7 +14,12 @@ public class HikeBusiness
     public List<Hike> LoadListOfHikes(RegularUser regularUser)
     {
 
-        return hikeData.LoadListOfHikes(regularUser);
+        regularUser.ListOfHikes = hikeData.LoadListOfHikes(regularUser);
+        foreach(Hike h in regularUser.ListOfHikes)
+        {
+            h.Route = hikeData.LoadRoute(h);
+        }
+        return regularUser.ListOfHikes;
     }
 
     public void InsertHike(ref Hike hike, ref RegularUser regularUser)
@@ -25,6 +30,23 @@ public class HikeBusiness
         {
             hikeData.InsertPoint(p, resultId);
         }
+    }
+
+    public Hike loadHike(Hike hike)
+    {
+        Hike h = new Hike();
+        h = hikeData.loadHikeInfo(hike);
+        h.ListOfRoutes = hikeData.loadRouteInfo(hike);
+        foreach(Route r in h.ListOfRoutes)
+        {
+            r.ListOfPoints = hikeData.loadPointInfo(r);
+        }
+        return h;
+    }
+
+    public List<Hike> filterHikes(Hike hike, bool GPS)
+    {
+        return hikeData.LoadListOfHikes(hike, GPS);
     }
 
     public List<string> getProvinces()

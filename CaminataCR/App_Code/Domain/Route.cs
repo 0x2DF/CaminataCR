@@ -6,6 +6,7 @@ using System.Web;
 
 public class Route
 {
+    private int routeId;
     private List<Point> listOfPoints;
 
     public Route()
@@ -22,6 +23,19 @@ public class Route
         set
         {
             listOfPoints = value;
+        }
+    }
+
+    public int RouteId
+    {
+        get
+        {
+            return routeId;
+        }
+
+        set
+        {
+            routeId = value;
         }
     }
 }

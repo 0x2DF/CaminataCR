@@ -164,6 +164,7 @@ public partial class SignUpRegular : System.Web.UI.Page
 
     protected void outputErrors(List<string> errorList)
     {
+        Errors.Text = "";
         foreach (string error in errorList)
         {
             Errors.Text += error;

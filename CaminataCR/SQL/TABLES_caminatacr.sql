@@ -40,8 +40,8 @@ activo BIT NOT NULL
 
 CREATE TABLE Amigos
 (
-idUsuario1 INT NOT NULL FOREIGN KEY REFERENCES Usuario(idUsuario),
-idUsuario2 INT NOT NULL FOREIGN KEY REFERENCES Usuario(idUsuario),
+idUsuario1 INT NOT NULL FOREIGN KEY REFERENCES Regular(idUsuario),
+idUsuario2 INT NOT NULL FOREIGN KEY REFERENCES Regular(idUsuario),
 CONSTRAINT PK_Amigos PRIMARY KEY (idUsuario1, idUsuario2)
 )
 
@@ -123,7 +123,7 @@ latitud FLOAT NOT NULL
 CREATE TABLE UsuarioPorCaminata
 (
 idUsuarioPorCaminata INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-idUsuario INT NOT NULL FOREIGN KEY REFERENCES Usuario(idUsuario),
+idUsuario INT NOT NULL FOREIGN KEY REFERENCES Regular(idUsuario),
 idCaminata INT NOT NULL FOREIGN KEY REFERENCES Caminata(idCaminata),
 fechaHora DATETIME NOT NULL,
 idtipoDeCaminata INT NOT NULL FOREIGN KEY REFERENCES TipoDeCaminata(idTipoDeCaminata),
@@ -165,7 +165,7 @@ CONSTRAINT PK_PuntosPorRuta PRIMARY KEY (idRutaPorUPC, idPuntosImportantes)
 CREATE TABLE Likes
 (
 idUsuarioPorCaminata INT NOT NULL FOREIGN KEY REFERENCES UsuarioPorCaminata(idUsuarioPorCaminata),
-idUsuario INT NOT NULL FOREIGN KEY REFERENCES Usuario (idUsuario),
+idUsuario INT NOT NULL FOREIGN KEY REFERENCES Regular (idUsuario),
 fechaHora DATETIME NOT NULL,
 CONSTRAINT PK_Likes PRIMARY KEY (idUsuario, idUsuarioPorCaminata)
 )
@@ -188,7 +188,7 @@ fechaHora DATETIME NOT NULL
 Create Table CierreDiario
 (
 idCierreDiario INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-idUsuario INT NOT NULL FOREIGN KEY REFERENCES Usuario (idUsuario),
+idUsuario INT NOT NULL FOREIGN KEY REFERENCES Regular (idUsuario),
 monto FLOAT NOT NULL,
 fechaHora DATETIME NOT NULL
 )
