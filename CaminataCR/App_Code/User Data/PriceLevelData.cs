@@ -8,16 +8,15 @@ using System.Configuration;
 using System.Diagnostics;
 
 /// <summary>
-/// Descripción breve de DificultyLevel
+/// Descripción breve de PriceLevelData
 /// </summary>
-public class DificultyLevelData : BaseData
+public class PriceLevelData : BaseData
 {
-    public DificultyLevelData()
+    public PriceLevelData()
     {
-       
     }
 
-    public List<string> getDificultyLevels()
+    public List<string> getPriceLevels()
     {
         List<string> dificultyLevels = new List<string>();
         try
@@ -25,7 +24,7 @@ public class DificultyLevelData : BaseData
             //open database connection
             SqlConnection connection = ManageDatabaseConnection("Open", "admin");
 
-            using (SqlCommand sqlCommand = new SqlCommand("dbo.getDificultyLevels", connection))
+            using (SqlCommand sqlCommand = new SqlCommand("dbo.getPriceLevels", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
@@ -33,7 +32,7 @@ public class DificultyLevelData : BaseData
                 {
                     while (sqlReader.Read())
                     {
-                        string walk = sqlReader["nivelDeDificultad"].ToString();
+                        string walk = sqlReader["nivelDePrecio"].ToString();
                         dificultyLevels.Add(walk);
                     }
                 }
@@ -48,16 +47,16 @@ public class DificultyLevelData : BaseData
         return dificultyLevels;
     }
 
-    public int InsertDificultyLevel(string dificultyLevel, int state)
+    public int InsertPriceLevel(string priceLevel, int state)
     {
         int error = 0;
         try
         {
             SqlConnection connection = ManageDatabaseConnection("Open", ("admin"));
-            using (SqlCommand sqlCommand = new SqlCommand("dbo.addDificultyLevel", connection))
+            using (SqlCommand sqlCommand = new SqlCommand("dbo.addPriceLevel", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.AddWithValue("@dificultyLevel", dificultyLevel);
+                sqlCommand.Parameters.AddWithValue("@priceLevel", priceLevel);
                 sqlCommand.Parameters.AddWithValue("@state", state);
 
                 var returnParameter = sqlCommand.Parameters.Add("@error", SqlDbType.Int);
@@ -78,15 +77,15 @@ public class DificultyLevelData : BaseData
         return error;
     }
 
-    public void deleteDificultyLevel(string dificultylevel)
+    public void deletePriceLevel(string pricelevel)
     {
         try
         {
             SqlConnection connection = ManageDatabaseConnection("Open", ("admin"));
-            using (SqlCommand sqlCommand = new SqlCommand("dbo.deleteDificultyLevel", connection))
+            using (SqlCommand sqlCommand = new SqlCommand("dbo.deletePriceLevel", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.AddWithValue("@dificulty", dificultylevel);
+                sqlCommand.Parameters.AddWithValue("@price", pricelevel);
 
                 sqlCommand.ExecuteNonQuery();
 

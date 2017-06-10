@@ -41,7 +41,7 @@ public partial class EditDificultyLevel : System.Web.UI.Page
 
     }
 
-    protected void deleteWalkType(object sender, EventArgs e)
+    protected void deleteDificultyLevel(object sender, EventArgs e)
     {
         DificultyLevelBusiness business = new DificultyLevelBusiness();
         string dificultyLevelToDelete = (string)Session["EditDificulty"]; ;

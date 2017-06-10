@@ -22,7 +22,7 @@ public class DificultyLevelBusiness
 
     public string insertDificultyLevel(string newDificultyLevel, int state)
     {
-        int insertingError = dificultyData.InsertWalkType(newDificultyLevel, state);
+        int insertingError = dificultyData.InsertDificultyLevel(newDificultyLevel, state);
         string errorText = "";
         switch (insertingError)
         {
@@ -30,7 +30,7 @@ public class DificultyLevelBusiness
                 errorText = null;
                 break;
             case 1:
-                errorText = "Este tipo de caminata ya existe";
+                errorText = "Este nivel de dificultad ya existe";
                 break;
             default:
                 errorText = "Hay un error no previsto. Contacte a un administrador";

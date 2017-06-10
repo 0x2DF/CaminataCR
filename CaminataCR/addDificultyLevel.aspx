@@ -143,7 +143,7 @@
 
                             </div>
                             <div class="form-group">
-                                <asp:Button ID="a" runat="server" Text="Agregar" CssClass="btn btn-outline btn-success" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" OnClick="CreateWalkType" />
+                                <asp:Button ID="a" runat="server" Text="Agregar" CssClass="btn btn-outline btn-success" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" OnClick="CreateDificultyLevel" />
                             </div>
                             <div class="form-group">
                                 <asp:Label ID="Errors" runat="server" Text=" <br> " CssClass="text-danger"></asp:Label>

@@ -12,7 +12,7 @@ public partial class addDificultyLevel : System.Web.UI.Page
 
     }
 
-    protected void CreateWalkType(object sender, EventArgs e)
+    protected void CreateDificultyLevel(object sender, EventArgs e)
     {
         DificultyLevelBusiness business = new DificultyLevelBusiness();
 

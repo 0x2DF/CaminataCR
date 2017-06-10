@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="EditDificultyLevel.aspx.cs" Inherits="EditDificultyLevel" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="EditPriceLevel.aspx.cs" Inherits="EditPriceLevel" %>
 
 <!DOCTYPE html>
 
@@ -131,15 +131,15 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Editar nivel de dificultad</h1>
+                            <h1 class="page-header">Editar nivel de precio</h1>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <asp:Label ID="Label2" runat="server" Text="Nivel de dificultad"></asp:Label>
+                                <asp:Label ID="Label2" runat="server" Text="Nivel de precio"></asp:Label>
 
                             </div>
                             <div class="form-group">
-                                <asp:TextBox ID="dificultylevel" placeholder="Nivel de dificultad" class="form-control" required runat="server"></asp:TextBox>
+                                <asp:TextBox ID="pricelevel" placeholder="Nivel de dificultad" class="form-control" required runat="server"></asp:TextBox>
                             </div>
                             <div class="form-group">
                                 <asp:Label ID="Label1" runat="server" Text="Activo"></asp:Label>
@@ -151,8 +151,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <asp:Button ID="a" runat="server" Text="Agregar" CssClass="btn btn-success btn-outline" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" OnClick="submitEditDificultyLevel"/>
-                                    <asp:Button ID="Button1" runat="server" Text="Eliminar" CssClass="btn btn-success btn-outline" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" OnClick="deleteDificultyLevel" />
+                                    <asp:Button ID="a" runat="server" Text="Agregar" CssClass="btn btn-success btn-outline" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" OnClick="submitEditPriceLevel"/>
+                                    <asp:Button ID="Button1" runat="server" Text="Eliminar" CssClass="btn btn-success btn-outline" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" OnClick="deletePriceLevel" />
                                 </div>
                             </div>
 
@@ -186,3 +186,4 @@
 
 </body>
 </html>
+
