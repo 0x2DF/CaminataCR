@@ -190,6 +190,40 @@ public class HikeData : BaseData
         return hike;
     }
 
+    public Hike loadHikeInfo(Route route)
+    {
+        Hike hike = new Hike();
+        hike.Route = route;
+        try
+        {
+            SqlConnection connection = ManageDatabaseConnection("Open", "regular");
+
+            using (SqlCommand sqlCommand = new SqlCommand("getHikeInfoWithRoute", connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@idRuta", route.RouteId);
+
+                using (SqlDataReader sqlReader = sqlCommand.ExecuteReader())
+                {
+                    hike.HikeId = (int)sqlReader["idCaminata"];
+                    hike.Latitud = sqlReader.GetDouble(1);
+                    hike.Longitud = sqlReader.GetDouble(2);
+                    hike.NameOfLocation = sqlReader["nombreDelLugar"].ToString();
+                    hike.Province = sqlReader["provincia"].ToString();
+                    hike.Canton = sqlReader["canton"].ToString();
+                    hike.District = sqlReader["distrito"].ToString();
+                    hike.Details = sqlReader["detalle"].ToString();
+                }
+            }
+            ManageDatabaseConnection("Close", "regular");
+        }
+        catch (SqlException sqlException)
+        {
+            throw sqlException;
+        }
+        return hike;
+    }
+
     public List<Route> loadRouteInfo(Hike hike)
     {
         List<Route> listOfRoutes = new List<Route>();
@@ -294,6 +328,54 @@ public class HikeData : BaseData
         }
         return resultID;
     }
+
+    public int InsertHikeWithHikeId(ref Hike hike, ref RegularUser regularUser)
+    {
+        int resultID = 0;
+        try
+        {
+            SqlConnection connection = ManageDatabaseConnection("Open", "regular");
+            using (SqlCommand sqlCommand = new SqlCommand("addHikeWithNewRoute", connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                //Usuario
+                sqlCommand.Parameters.AddWithValue("@UserId", regularUser.UserId);
+                //Caminata
+                sqlCommand.Parameters.AddWithValue("@HikeId", hike.HikeId);
+                sqlCommand.Parameters.AddWithValue("@NameOfLocation", hike.NameOfLocation);
+                sqlCommand.Parameters.AddWithValue("@Province", hike.Province);
+                sqlCommand.Parameters.AddWithValue("@Canton", hike.Canton);
+                sqlCommand.Parameters.AddWithValue("@District", hike.District);
+                sqlCommand.Parameters.AddWithValue("@Details", hike.Details);
+                sqlCommand.Parameters.AddWithValue("@Longitud", hike.Longitud);
+                sqlCommand.Parameters.AddWithValue("@Latitud", hike.Latitud);
+                //UsuarioPorCaminata
+                sqlCommand.Parameters.AddWithValue("@HikeType", hike.HikeType);
+                sqlCommand.Parameters.AddWithValue("@Price", hike.Price);
+                sqlCommand.Parameters.AddWithValue("@Quality", hike.Quality);
+                sqlCommand.Parameters.AddWithValue("@Difficulty", hike.Difficulty);
+                if (hike.Image != null)
+                {
+                    sqlCommand.Parameters.Add("@image", SqlDbType.VarBinary).Value = hike.Image;
+                }
+                sqlCommand.Parameters.AddWithValue("@Comment", hike.Comment);
+
+                var returnParameter = sqlCommand.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                sqlCommand.ExecuteNonQuery();
+                resultID = Convert.ToInt32(returnParameter.Value);
+            }
+            ManageDatabaseConnection("Close", "regular");
+        }
+
+        catch (SqlException sqlException)
+        {
+
+            throw sqlException;
+        }
+        return resultID;
+    }
     public int InsertRoute(int idUserPerHike)
     {
         int resultID = 0;
@@ -304,6 +386,32 @@ public class HikeData : BaseData
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 sqlCommand.Parameters.AddWithValue("@UserPerHikeId", idUserPerHike);
+                var returnParameter = sqlCommand.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                sqlCommand.ExecuteNonQuery();
+                resultID = Convert.ToInt32(returnParameter.Value);
+            }
+            ManageDatabaseConnection("Close", "regular");
+        }
+        catch (SqlException sqlException)
+        {
+
+            throw sqlException;
+        }
+        return resultID;
+    }
+    public int InsertRouteWithRouteId(int idUserPerHike, int RouteId)
+    {
+        int resultID = 0;
+        try
+        {
+            SqlConnection connection = ManageDatabaseConnection("Open", "regular");
+            using (SqlCommand sqlCommand = new SqlCommand("addRouteWithRouteId", connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@UserPerHikeId", idUserPerHike);
+                sqlCommand.Parameters.AddWithValue("@RouteId", RouteId);
                 var returnParameter = sqlCommand.Parameters.Add("@ReturnVal", SqlDbType.Int);
                 returnParameter.Direction = ParameterDirection.ReturnValue;
 
@@ -332,6 +440,40 @@ public class HikeData : BaseData
                 //Point
                 sqlCommand.Parameters.AddWithValue("@Latitud", p.Latitud);
                 sqlCommand.Parameters.AddWithValue("@Longitud", p.Longitud);
+                //PointPerRPUPC
+                sqlCommand.Parameters.AddWithValue("@Pos", p.Pos);
+                sqlCommand.Parameters.AddWithValue("@Comment", p.Comment);
+                if (p.Image != null)
+                {
+                    sqlCommand.Parameters.Add("@Image", SqlDbType.VarBinary).Value = p.Image;
+                }
+
+                var returnParameter = sqlCommand.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                sqlCommand.ExecuteNonQuery();
+                resultID = Convert.ToInt32(returnParameter.Value);
+            }
+            ManageDatabaseConnection("Close", "regular");
+        }
+        catch (SqlException sqlException)
+        {
+
+            throw sqlException;
+        }
+        return resultID;
+    }
+    public int InsertPointWithPointId(Point p, int idRoutePerUPC)
+    {
+        int resultID = 0;
+        try
+        {
+            SqlConnection connection = ManageDatabaseConnection("Open", "regular");
+            using (SqlCommand sqlCommand = new SqlCommand("addPointWithPointId", connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@idRutaPorUPC", idRoutePerUPC);
+                sqlCommand.Parameters.AddWithValue("@idPuntosImportantes", p.PointId);
                 //PointPerRPUPC
                 sqlCommand.Parameters.AddWithValue("@Pos", p.Pos);
                 sqlCommand.Parameters.AddWithValue("@Comment", p.Comment);

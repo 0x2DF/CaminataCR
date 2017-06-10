@@ -31,8 +31,34 @@ public class HikeBusiness
             hikeData.InsertPoint(p, resultId);
         }
     }
-
+    public void InsertHikeWithNewRoute(ref Hike hike, ref RegularUser regularUser)
+    {
+        int resultId = hikeData.InsertHikeWithHikeId(ref hike, ref regularUser);
+        resultId = hikeData.InsertRoute(resultId);
+        foreach (Point p in hike.Route.ListOfPoints)
+        {
+            hikeData.InsertPoint(p, resultId);
+        }
+    }
+    public void InsertHikeWithExistingRoute(ref Hike hike, ref RegularUser regularUser)
+    {
+        int resultId = hikeData.InsertHikeWithHikeId(ref hike, ref regularUser);
+        resultId = hikeData.InsertRouteWithRouteId(resultId, hike.Route.RouteId);
+        foreach (Point p in hike.Route.ListOfPoints)
+        {
+            hikeData.InsertPointWithPointId(p, resultId);
+        }
+    }
+    //ShowHike -> Existing Route
     public Hike loadHike(Hike hike)
+    {
+        Hike h = new Hike();
+        h = hikeData.loadHikeInfo(hike.Route);
+        h.Route.ListOfPoints = hikeData.loadPointInfo(h.Route);
+        return h;
+    }
+    //HikeLobby -> Filter Hikes -> get info on one filtered hike
+    public Hike loadInfoOfListOfHikes(Hike hike)
     {
         Hike h = new Hike();
         h = hikeData.loadHikeInfo(hike);

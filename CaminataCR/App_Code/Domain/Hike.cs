@@ -27,6 +27,7 @@ public class Hike
 
     private Route route;
     private List<Route> listOfRoutes;
+    private bool sameHike;
     private int likes;
 
     public string HikeType
@@ -273,6 +274,19 @@ public class Hike
         set
         {
             listOfRoutes = value;
+        }
+    }
+
+    public bool SameHike
+    {
+        get
+        {
+            return sameHike;
+        }
+
+        set
+        {
+            sameHike = value;
         }
     }
 

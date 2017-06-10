@@ -42,7 +42,6 @@ public partial class NewHike : System.Web.UI.Page
         }
         DisplayRoute();
     }
-
     private void FillDropDownLists()
     {
         HikeBusiness hb = new HikeBusiness();
@@ -546,8 +545,16 @@ public partial class NewHike : System.Web.UI.Page
 
             HikeBusiness hb = new HikeBusiness();
             RegularUser regularUser = (RegularUser)Session["REG_USER"];
-            hb.InsertHike(ref hike, ref regularUser);
 
+            if(hike.SameHike)
+            {
+                hb.InsertHikeWithNewRoute(ref hike, ref regularUser);
+            }
+            else
+            {
+                hb.InsertHike(ref hike, ref regularUser);
+            }
+            
             Session["HIKE"] = null;
 
             Notification n = new Notification();

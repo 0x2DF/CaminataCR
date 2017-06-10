@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="NewHike.aspx.cs" Inherits="NewHike" %>
 
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -275,7 +274,7 @@
 	                                <div class="panel panel-default">
 		                                <div class="panel-heading">
 			                                <h4 class="panel-title">
-				                                <a data-toggle="collapse" data-parent="#accordion" href="#Finish"><i class="fa fa-power-off fa-fw"></i> Finalizar Caminata</a>
+				                                <a data-toggle="collapse" data-parent="#accordion2" href="#Finish"><i class="fa fa-power-off fa-fw"></i> Finalizar Caminata</a>
 			                                </h4>
 		                                </div>
 		                                <div id="Finish" class="panel-collapse collapse">

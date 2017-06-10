@@ -246,6 +246,7 @@ public partial class HikeLobby : System.Web.UI.Page
             {
                 hike.Image = null;
             }
+            hike.SameHike = false;
             Session["HIKE"] = hike;
             Response.Redirect("NewHike.aspx");
 
@@ -342,7 +343,7 @@ public partial class HikeLobby : System.Web.UI.Page
         LinkButton lbtn = (LinkButton)sender;
         Hike hike = new Hike();
         hike.HikeId = Int32.Parse(lbtn.ID);
-        hike = hb.loadHike(hike);
+        hike = hb.loadInfoOfListOfHikes(hike);
         Session["HIKE"] = hike;
         Response.Redirect("ShowHike.aspx");
     }
