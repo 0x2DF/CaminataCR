@@ -5,8 +5,8 @@ AS
 BEGIN
 
 	INSERT INTO Bitacora(fechaHora, descripcion, idUsuario, tipoCambio, objeto)
-		SELECT GETDATE(), 'Creación de usuario regular ' + original.primerNombre + ' ' + original.primerApellido + ' con Id ' + CONVERT(NVARCHAR(MAX), original.idUsuario), 
-			   original.idUsuario, 'INSERT', 'Regular'
+		SELECT GETDATE(), 'Eliminación de usuario regular ' + original.primerNombre + ' ' + original.primerApellido + ' con el Id ' + CONVERT(NVARCHAR(MAX), original.idUsuario), 
+			   SYSTEM_USER, 'DELETE', 'Regular'
 		FROM deleted original
 
 END

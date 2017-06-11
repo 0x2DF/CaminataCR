@@ -5,8 +5,8 @@ AS
 BEGIN
 	
 	INSERT INTO Bitacora(fechaHora, descripcion, idUsuario, tipoCambio, objeto)
-		SELECT GETDATE(), 'Creación de usuario regular ' + nuevo.cuenta + ' ' + ' con Id ' + CONVERT(NVARCHAR(MAX), nuevo.idUsuario), 
-			   nuevo.idUsuario, 'INSERT', 'Usuario'
+		SELECT GETDATE(), 'Creación de usuario ' + nuevo.cuenta + ' ' + ' con el Id ' + CONVERT(NVARCHAR(MAX), nuevo.idUsuario), 
+			   SYSTEM_USER, 'INSERT', 'Usuario'
 		FROM inserted nuevo
 
 END

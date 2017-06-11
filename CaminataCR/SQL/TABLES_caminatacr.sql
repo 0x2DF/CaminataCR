@@ -49,28 +49,32 @@ CREATE TABLE TipoDeCaminata
 (
 idTipoDeCaminata INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 tipoDeCaminata VARCHAR(30) NOT NULL,
-activo BIT NOT NULL
+activo BIT NOT NULL,
+idUsuario INT NOT NULL FOREIGN KEY REFERENCES Regular(idUsuario)
 )
 
 CREATE TABLE NivelDeDificultad
 (
 idNivelDeDificultad INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 nivelDeDificultad VARCHAR(30) NOT NULL,
-activo BIT NOT NULL
+activo BIT NOT NULL,
+idUsuario INT NOT NULL FOREIGN KEY REFERENCES Regular(idUsuario)
 )
 
 CREATE TABLE NivelDePrecio
 (
 idNivelDePrecio INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 nivelDePrecio VARCHAR(30) NOT NULL,
-activo BIT NOT NULL
+activo BIT NOT NULL,
+idUsuario INT NOT NULL FOREIGN KEY REFERENCES Regular(idUsuario)
 )
 
 CREATE TABLE NivelDeCalidad
 (
 idNivelDeCalidad INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 nivelDeCalidad VARCHAR(30) NOT NULL,
-activo BIT NOT NULL
+activo BIT NOT NULL,
+idUsuario INT NOT NULL FOREIGN KEY REFERENCES Regular(idUsuario)
 )
 
 -- START
