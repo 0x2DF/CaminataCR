@@ -1,6 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CatalogMaintenance.aspx.cs" Inherits="CatalogMaintenance" %>
-
-<!DOCTYPE html>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LogWindow.aspx.cs" Inherits="LogWindow" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -11,7 +9,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 
-    <title>Administradores</title>
+    <title>Consulta de bitácora</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
@@ -47,7 +45,7 @@
                         <span class="icon-bar" style="color: white"></span>
                         <span class="icon-bar" style="color: white"></span>
                     </button>
-                    <a href="CatalogMaintenance.aspx" class="navbar-brand" style="color: white">Administradores</a>
+                    <a href="LogWindow.aspx" class="navbar-brand" style="color: white">Administradores</a>
                 </div>
                 <!-- /.navbar-header -->
 
@@ -129,13 +127,58 @@
             <!-- Page Content -->
             <div id="page-wrapper">
                 <div class="container-fluid">
+
+                    <asp:CheckBox ID="ChxActivarFecha" runat="server" Text="Consulta por fecha"/>
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header"></h1>
+                            <asp:Label ID="LblInicio" runat="server" Text="Inicio:"></asp:Label>
+                            <asp:TextBox ID="DtInicio" runat="server" Class="form-control" placeholder="Fecha Inicio" type="date"></asp:TextBox>
+                            <asp:Label ID="LblFinal" runat="server" Text="Final:"></asp:Label>
+                            <asp:TextBox ID="DtFinal" runat="server" Class="form-control" placeholder="Fecha Final" type="date"></asp:TextBox>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
                     <!-- /.row -->
+                                        
+                    <asp:CheckBox ID="ChxActivarHora" runat="server" Text="Consulta por hora"/>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <asp:Label ID="LblHora" runat="server" Text="Hora"></asp:Label>
+                            <asp:Label ID="LblMin" runat="server" Text="Minuto"></asp:Label>
+                            <asp:Label ID="LblSeg" runat="server" Text="Segundo"></asp:Label>    
+                        </div>
+
+                        <div class="col-lg-12">
+                            <asp:DropDownList ID="DDLstHora" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="DDLstMin" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="DDLstSeg" runat="server"></asp:DropDownList>
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <!-- /.row -->
+                    
+                    <asp:CheckBox ID="ChxActivarTipoCambio" runat="server" Text="Consulta por tipo de cambio"/>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <asp:Label ID="LblTipoCambio" runat="server" Text="Tipo de Cambio"></asp:Label>
+                            <asp:DropDownList ID="DDLstTipoCambio" runat="server"></asp:DropDownList>
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <!-- /.row -->
+
+                    <asp:CheckBox ID="ChxActivarObjeto" runat="server" Text="Consulta por objeto"/>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <asp:Label ID="LblObjeto" runat="server" Text="Objeto"></asp:Label>
+                            <asp:DropDownList ID="DDLstObjeto" runat="server"></asp:DropDownList>
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <!-- /.row -->
+
+                    <asp:Button ID="BtnConsulta" runat="server" Text="Consulta" OnClick="Query" />
+                                                               
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -156,6 +199,6 @@
         <!-- Custom Theme JavaScript -->
         <script src="../dist/js/sb-admin-2.js"></script>
     </form>
-
 </body>
 </html>
+
