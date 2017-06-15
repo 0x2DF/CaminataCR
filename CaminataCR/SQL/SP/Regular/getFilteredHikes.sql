@@ -13,43 +13,43 @@ AS
 BEGIN
 	
 	DECLARE @idProvincia  INT
-	IF @Province IS NULL
+	IF @Province IS NOT NULL
 		SET @idProvincia = (SELECT idProvincia FROM dbo.Provincia WHERE provincia = @Province)
 	ELSE
 		SET @idProvincia = NULL
 
 	DECLARE @idCanton  INT
-	IF @Canton IS NULL
+	IF @Canton IS NOT NULL
 		SET @idCanton = (SELECT idCanton FROM dbo.Canton WHERE canton = @Canton)
 	ELSE
 		SET @idCanton = NULL
 
 	DECLARE @idDistrito  INT
-	IF @District IS NULL
+	IF @District IS NOT NULL
 		SET @idDistrito = (SELECT idDistrito FROM dbo.Distrito WHERE distrito = @District)
 	ELSE
 		SET @idDistrito = NULL
 
 	DECLARE @idTipoDeCaminata  INT
-	IF @HikeType IS NULL
+	IF @HikeType IS NOT NULL
 		SET @idTipoDeCaminata = (SELECT idTipoDeCaminata FROM dbo.TipoDeCaminata WHERE tipoDeCaminata = @HikeType)
 	ELSE
 		SET @idTipoDeCaminata = NULL
 
 	DECLARE @idNivelDePrecio  INT
-	IF @Price IS NULL
+	IF @Price IS NOT NULL
 		SET @idNivelDePrecio = (SELECT idNivelDePrecio FROM dbo.NivelDePrecio WHERE nivelDePrecio = @Price)
 	ELSE
 		SET @idNivelDePrecio = NULL
 
 	DECLARE @idNivelDeCalidad  INT
-	IF @Quality IS NULL
+	IF @Quality IS NOT NULL
 		SET @idNivelDeCalidad = (SELECT idNivelDeCalidad FROM dbo.NivelDeCalidad WHERE nivelDeCalidad = @Quality)
 	ELSE
 		SET @idNivelDeCalidad = NULL
 
 	DECLARE @idNivelDeDificultad  INT
-	IF @Difficulty IS NULL
+	IF @Difficulty IS NOT NULL
 		SET @idNivelDeDificultad = (SELECT idNivelDeDificultad FROM dbo.NivelDeDificultad WHERE nivelDeDificultad = @Difficulty)
 	ELSE
 		SET @idNivelDeDificultad = NULL
@@ -60,7 +60,7 @@ BEGIN
 	INNER JOIN UsuarioPorCaminata UPC
 		ON C.idCaminata = UPC.idCaminata
 	WHERE (
-			((@NameOfLocation IS NULL) OR (C.nombreDelLugar LIKE @NameOfLocation)) AND
+			((@NameOfLocation IS NULL) OR (C.nombreDelLugar LIKE '%'+@NameOfLocation+'%')) AND
 			((@idProvincia IS NULL) OR (C.idProvincia = @idProvincia)) AND
 			((@idCanton IS NULL) OR (C.idCanton = @idCanton)) AND
 			((@idDistrito IS NULL) OR (C.idDistrito = @idDistrito)) AND

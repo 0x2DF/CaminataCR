@@ -492,7 +492,7 @@ public partial class NewHike : System.Web.UI.Page
     {
         List<string> errorList = new List<string>();
         //rName : alphanumeric
-        Regex rDetails = new Regex("^[a-zA-Z0-9\\s\\.]*$");
+        Regex rDetails = new Regex("^[a-zA-Z0-9\\s\\.\\,]*$");
         //GPS : numeric
         Regex rFloat = new Regex("^-?[0-9]\\d*(\\.\\d+)?$");
 

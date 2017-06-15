@@ -72,14 +72,13 @@ public partial class ShowHike : System.Web.UI.Page
             listOfLong.Add(startLong);
             listOfLat.Add(startLat);
             listOfLen.Add(1);
-
-            List<double> pointLong = new List<double>();
-            List<double> pointtLat = new List<double>();
-
+            
             int i = 1;
             int j;
             foreach (Route r in hike.ListOfRoutes)
             {
+                List<double> pointLong = new List<double>();
+                List<double> pointtLat = new List<double>();
                 hikeContainer.Controls.Add(addLinkButton(r, i));
                 j = 0;
                 foreach(Point p in r.ListOfPoints)
@@ -142,6 +141,7 @@ public partial class ShowHike : System.Web.UI.Page
 
         System.Web.UI.HtmlControls.HtmlGenericControl NavListItemDetails =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("li");
+        NavListItemDetails.Attributes["class"] = "active";
 
         System.Web.UI.HtmlControls.HtmlGenericControl NavListItemLinkDetails =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("a");

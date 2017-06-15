@@ -299,8 +299,6 @@ public partial class ExistingRoute : System.Web.UI.Page
         Label labelPos = new Label();
         labelPos.Text = " Inicio";
 
-
-
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerCollapse =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
         divContainerCollapse.Attributes["class"] = "panel-collapse collapse";
@@ -314,34 +312,19 @@ public partial class ExistingRoute : System.Web.UI.Page
                 new System.Web.UI.HtmlControls.HtmlGenericControl("ul");
         NavTab.Attributes["class"] = "nav nav-tabs";
 
-        System.Web.UI.HtmlControls.HtmlGenericControl NavListItemImage =
-                new System.Web.UI.HtmlControls.HtmlGenericControl("li");
-        NavListItemImage.Attributes["class"] = "active";
-
-        System.Web.UI.HtmlControls.HtmlGenericControl NavListItemLinkImage =
-                new System.Web.UI.HtmlControls.HtmlGenericControl("a");
-        NavListItemLinkImage.Attributes["data-toggle"] = "tab";
-        NavListItemLinkImage.Attributes["href"] = "#image_Init";
-
         System.Web.UI.HtmlControls.HtmlGenericControl NavListItemDetails =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("li");
+        NavListItemDetails.Attributes["class"] = "active";
 
         System.Web.UI.HtmlControls.HtmlGenericControl NavListItemLinkDetails =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("a");
         NavListItemLinkDetails.Attributes["data-toggle"] = "tab";
         NavListItemLinkDetails.Attributes["href"] = "#details_Init";
 
-        System.Web.UI.HtmlControls.HtmlGenericControl ImageMarker =
-                new System.Web.UI.HtmlControls.HtmlGenericControl("i");
-        ImageMarker.Attributes["class"] = "fa fa-camera fa-fw";
-
         System.Web.UI.HtmlControls.HtmlGenericControl DetailsMarker =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("i");
         DetailsMarker.Attributes["class"] = "fa fa-file-text-o fa-fw";
-
-        Label labelTabImage = new Label();
-        labelTabImage.Text = "Imagen";
-
+        
         Label labelTabDetails = new Label();
         labelTabDetails.Text = "Detalles";
 
@@ -349,15 +332,10 @@ public partial class ExistingRoute : System.Web.UI.Page
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerTabContent =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
         divContainerTabContent.Attributes["class"] = "tab-content";
-
-        System.Web.UI.HtmlControls.HtmlGenericControl divContainerTabPaneImage =
-                new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
-        divContainerTabPaneImage.Attributes["class"] = "tab-pane fade in active";
-        divContainerTabPaneImage.Attributes["id"] = "image_Init";
-
+        
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerTabPaneDetails =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
-        divContainerTabPaneDetails.Attributes["class"] = "tab-pane fade";
+        divContainerTabPaneDetails.Attributes["class"] = "tab-pane fade in active";
         divContainerTabPaneDetails.Attributes["id"] = "details_Init";
 
         Label labelName = new Label();
@@ -407,19 +385,13 @@ public partial class ExistingRoute : System.Web.UI.Page
         linkContainer.Controls.Add(labelPos);
         divContainerTitle.Controls.Add(linkContainer);
         divContainerHeading.Controls.Add(divContainerTitle);
-
-        //NavListItemLinkImage.Controls.Add(ImageMarker);
-        //NavListItemLinkImage.Controls.Add(labelTabImage);
+        
         NavListItemLinkDetails.Controls.Add(DetailsMarker);
         NavListItemLinkDetails.Controls.Add(labelTabDetails);
-
-        //NavListItemImage.Controls.Add(NavListItemLinkImage);
+        
         NavListItemDetails.Controls.Add(NavListItemLinkDetails);
-
-        //NavTab.Controls.Add(NavListItemImage);
+        
         NavTab.Controls.Add(NavListItemDetails);
-
-        //divContainerTabPaneImage.Controls.Add(imgThumbnail);
         
         divContainerTabPaneDetails.Controls.Add(labelName);
         divContainerTabPaneDetails.Controls.Add(breakLine1);
@@ -432,8 +404,7 @@ public partial class ExistingRoute : System.Web.UI.Page
         divContainerTabPaneDetails.Controls.Add(labelLatitud);
         divContainerTabPaneDetails.Controls.Add(breakLine5);
         divContainerTabPaneDetails.Controls.Add(labelLongitud);
-
-        divContainerTabContent.Controls.Add(divContainerTabPaneImage);
+        
         divContainerTabContent.Controls.Add(divContainerTabPaneDetails);
 
         divContainerBody.Controls.Add(NavTab);
@@ -532,7 +503,7 @@ public partial class ExistingRoute : System.Web.UI.Page
     {
         List<string> errorList = new List<string>();
         //rName : alphanumeric
-        Regex rDetails = new Regex("^[a-zA-Z0-9\\s\\.]*$");
+        Regex rDetails = new Regex("^[a-zA-Z0-9\\s\\.\\,]*$");
 
         //Commentary
         if ((tb_end_commentary.Text.Length == 0) || (tb_end_commentary.Text.Length > 500)) errorList.Add("Comentario : Tamaño incorrecto [500] maximo.");

@@ -29,9 +29,9 @@ public partial class Wall : System.Web.UI.Page
         rowContainer.InnerHtml = "";
         DisplayMainHeader();
         RegularUser regularUser = (RegularUser)Session["REG_USER"];
+        int j = 0;
         foreach (RegularUser ru in regularUser.ListOfFriends)
         {
-            int j = 0;
             foreach(Hike h in ru.ListOfHikes)
             {
                 DisplayHike(ru, h, j, regularUser.UserId);
@@ -172,7 +172,7 @@ public partial class Wall : System.Web.UI.Page
                 new System.Web.UI.HtmlControls.HtmlGenericControl("a");
         linkContainer.Attributes["data-toggle"] = "collapse";
         linkContainer.Attributes["data-parent"] = "#accordion_" + id.ToString();
-        linkContainer.Attributes["href"] = "#collapse_User";
+        linkContainer.Attributes["href"] = "#collapse_User_" + id.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl MapMarker =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("i");
@@ -184,7 +184,7 @@ public partial class Wall : System.Web.UI.Page
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerCollapse =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
         divContainerCollapse.Attributes["class"] = "panel-collapse collapse";
-        divContainerCollapse.Attributes["id"] = "collapse_User";
+        divContainerCollapse.Attributes["id"] = "collapse_User_" + id.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerBody =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
@@ -201,7 +201,7 @@ public partial class Wall : System.Web.UI.Page
         System.Web.UI.HtmlControls.HtmlGenericControl NavListItemLinkImage =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("a");
         NavListItemLinkImage.Attributes["data-toggle"] = "tab";
-        NavListItemLinkImage.Attributes["href"] = "#image_User";
+        NavListItemLinkImage.Attributes["href"] = "#image_User_" + id.ToString();
 
         Label labelTabImage = new Label();
         labelTabImage.Text = "Imagen";
@@ -213,7 +213,7 @@ public partial class Wall : System.Web.UI.Page
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerTabPaneImage =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
         divContainerTabPaneImage.Attributes["class"] = "tab-pane fade in active";
-        divContainerTabPaneImage.Attributes["id"] = "image_User";
+        divContainerTabPaneImage.Attributes["id"] = "image_User_" + id.ToString();
 
 
         System.Web.UI.HtmlControls.HtmlGenericControl imgThumbnail =
@@ -272,7 +272,7 @@ public partial class Wall : System.Web.UI.Page
                 new System.Web.UI.HtmlControls.HtmlGenericControl("a");
         linkContainer.Attributes["data-toggle"] = "collapse";
         linkContainer.Attributes["data-parent"] = "#accordion_" + id.ToString();
-        linkContainer.Attributes["href"] = "#collapse_Init";
+        linkContainer.Attributes["href"] = "#collapse_Init_" + id.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl MapMarker =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("i");
@@ -284,7 +284,7 @@ public partial class Wall : System.Web.UI.Page
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerCollapse =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
         divContainerCollapse.Attributes["class"] = "panel-collapse collapse";
-        divContainerCollapse.Attributes["id"] = "collapse_Init";
+        divContainerCollapse.Attributes["id"] = "collapse_Init_" + id.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerBody =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
@@ -301,7 +301,7 @@ public partial class Wall : System.Web.UI.Page
         System.Web.UI.HtmlControls.HtmlGenericControl NavListItemLinkImage =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("a");
         NavListItemLinkImage.Attributes["data-toggle"] = "tab";
-        NavListItemLinkImage.Attributes["href"] = "#image_Init";
+        NavListItemLinkImage.Attributes["href"] = "#image_Init_" + id.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl NavListItemDetails =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("li");
@@ -309,7 +309,7 @@ public partial class Wall : System.Web.UI.Page
         System.Web.UI.HtmlControls.HtmlGenericControl NavListItemLinkDetails =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("a");
         NavListItemLinkDetails.Attributes["data-toggle"] = "tab";
-        NavListItemLinkDetails.Attributes["href"] = "#details_Init";
+        NavListItemLinkDetails.Attributes["href"] = "#details_Init_" + id.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl NavListItemExperience =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("li");
@@ -317,7 +317,7 @@ public partial class Wall : System.Web.UI.Page
         System.Web.UI.HtmlControls.HtmlGenericControl NavListItemLinkExperience =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("a");
         NavListItemLinkExperience.Attributes["data-toggle"] = "tab";
-        NavListItemLinkExperience.Attributes["href"] = "#experience_Init";
+        NavListItemLinkExperience.Attributes["href"] = "#experience_Init_" + id.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl ImageMarker =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("i");
@@ -347,17 +347,17 @@ public partial class Wall : System.Web.UI.Page
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerTabPaneImage =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
         divContainerTabPaneImage.Attributes["class"] = "tab-pane fade in active";
-        divContainerTabPaneImage.Attributes["id"] = "image_Init";
+        divContainerTabPaneImage.Attributes["id"] = "image_Init_" + id.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerTabPaneDetails =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
         divContainerTabPaneDetails.Attributes["class"] = "tab-pane fade";
-        divContainerTabPaneDetails.Attributes["id"] = "details_Init";
+        divContainerTabPaneDetails.Attributes["id"] = "details_Init_" + id.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerTabPaneExperience =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
         divContainerTabPaneExperience.Attributes["class"] = "tab-pane fade";
-        divContainerTabPaneExperience.Attributes["id"] = "experience_Init";
+        divContainerTabPaneExperience.Attributes["id"] = "experience_Init_" + id.ToString();
 
         Label labelName = new Label();
         labelName.Text = "Nombre del Lugar: " + h.NameOfLocation;
@@ -521,8 +521,8 @@ public partial class Wall : System.Web.UI.Page
         System.Web.UI.HtmlControls.HtmlGenericControl linkContainer =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("a");
         linkContainer.Attributes["data-toggle"] = "collapse";
-        linkContainer.Attributes["data-parent"] = "#accordion_" + id.ToString();
-        linkContainer.Attributes["href"] = "#collapse_" + id2.ToString();
+        linkContainer.Attributes["data-parent"] = "#accordion_" + id.ToString() + "_" + id2.ToString();
+        linkContainer.Attributes["href"] = "#collapse_" + id.ToString() + "_" + id2.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl MapMarker =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("i");
@@ -536,7 +536,7 @@ public partial class Wall : System.Web.UI.Page
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerCollapse =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
         divContainerCollapse.Attributes["class"] = "panel-collapse collapse";
-        divContainerCollapse.Attributes["id"] = "collapse_" + id2.ToString();
+        divContainerCollapse.Attributes["id"] = "collapse_" + id.ToString() + "_" + id2.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerBody =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
@@ -553,7 +553,7 @@ public partial class Wall : System.Web.UI.Page
         System.Web.UI.HtmlControls.HtmlGenericControl NavListItemLinkImage =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("a");
         NavListItemLinkImage.Attributes["data-toggle"] = "tab";
-        NavListItemLinkImage.Attributes["href"] = "#image_" + id2.ToString();
+        NavListItemLinkImage.Attributes["href"] = "#image_" + id.ToString() + "_" + id2.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl NavListItemDetails =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("li");
@@ -561,7 +561,7 @@ public partial class Wall : System.Web.UI.Page
         System.Web.UI.HtmlControls.HtmlGenericControl NavListItemLinkDetails =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("a");
         NavListItemLinkDetails.Attributes["data-toggle"] = "tab";
-        NavListItemLinkDetails.Attributes["href"] = "#details_" + id2.ToString();
+        NavListItemLinkDetails.Attributes["href"] = "#details_" + id.ToString() + "_" + id2.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl NavListItemComment =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("li");
@@ -569,7 +569,7 @@ public partial class Wall : System.Web.UI.Page
         System.Web.UI.HtmlControls.HtmlGenericControl NavListItemLinkComment =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("a");
         NavListItemLinkComment.Attributes["data-toggle"] = "tab";
-        NavListItemLinkComment.Attributes["href"] = "#comment_" + id2.ToString();
+        NavListItemLinkComment.Attributes["href"] = "#comment_" + id.ToString() + "_" + id2.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl ImageMarker =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("i");
@@ -599,17 +599,17 @@ public partial class Wall : System.Web.UI.Page
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerTabPaneImage =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
         divContainerTabPaneImage.Attributes["class"] = "tab-pane fade in active";
-        divContainerTabPaneImage.Attributes["id"] = "image_" + id2.ToString();
+        divContainerTabPaneImage.Attributes["id"] = "image_" + id.ToString() + "_" + id2.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerTabPaneDetails =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
         divContainerTabPaneDetails.Attributes["class"] = "tab-pane fade";
-        divContainerTabPaneDetails.Attributes["id"] = "details_" + id2.ToString();
+        divContainerTabPaneDetails.Attributes["id"] = "details_" + id.ToString() + "_" + id2.ToString();
 
         System.Web.UI.HtmlControls.HtmlGenericControl divContainerTabPaneComment =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
         divContainerTabPaneComment.Attributes["class"] = "tab-pane fade";
-        divContainerTabPaneComment.Attributes["id"] = "comment_" + id2.ToString();
+        divContainerTabPaneComment.Attributes["id"] = "comment_" + id.ToString() + "_" + id2.ToString();
 
         Label labelLatitud = new Label();
         labelLatitud.Text = "Latitud: " + p.Latitud.ToString();

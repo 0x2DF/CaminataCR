@@ -136,17 +136,19 @@
                                         {
                                             if(n[i] == '[')
                                             {
-                                                for(var j = 0; j < len[k]; ++j)
+                                                for(var j = 0; j < len[k];)
                                                 {
                                                     i++;
                                                     if(n[i] == ',')
                                                     {
                                                         listOfRoutes[k][j] = temp;
                                                         temp = "";
+                                                        j++;
                                                     }else if(n[i] == ']')
                                                     {
                                                         listOfRoutes[k][j] = temp;
                                                         temp = "";
+                                                        j++;
                                                     } else
                                                     {
                                                         temp = temp + n[i];
@@ -166,17 +168,19 @@
                                         {
                                             if(n[i] == '[')
                                             {
-                                                for(var j = 0; j < len[k]; ++j)
+                                                for(var j = 0; j < len[k];)
                                                 {
                                                     i++;
                                                     if(n[i] == ',')
                                                     {
                                                         listOfRoutes2[k][j] = temp;
                                                         temp = "";
+                                                        j++;
                                                     }else if(n[i] == ']')
                                                     {
                                                         listOfRoutes2[k][j] = temp;
                                                         temp = "";
+                                                        j++;
                                                     } else
                                                     {
                                                         temp = temp + n[i];

@@ -84,10 +84,10 @@
                                     <asp:TextBox ID="nacionality" class="form-control" placeholder="Nacionalidad" required runat="server"></asp:TextBox>
                                 </div>  
                                 <div class="form-group">
-                                    <asp:TextBox ID="phone" class="form-control" placeholder="Numero telefonico" required runat="server" type="number"></asp:TextBox>
+                                    <asp:TextBox ID="phone" class="form-control" placeholder="Numero telefonico" required runat="server"></asp:TextBox>
                                 </div>  
                                 <div class="form-group">
-                                    <asp:TextBox ID="bankAccount" class="form-control" placeholder="Cuenta Bancaria" required runat="server" type="number"></asp:TextBox>
+                                    <asp:TextBox ID="bankAccount" class="form-control" placeholder="Cuenta Bancaria" required runat="server"></asp:TextBox>
                                 </div>  
                                 <div class="form-group">
                                     <asp:DropDownList ID="sex" CssClass="list-group-item" runat="server">

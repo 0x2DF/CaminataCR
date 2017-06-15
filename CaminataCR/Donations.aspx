@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="form-group input-group">
                                         <label>Validar Contraseña</label>
-                                        <asp:TextBox id="password" type="text" class="form-control" placeholder="Contraseña" required runat="server"></asp:TextBox>
+                                        <asp:TextBox id="password" type="password" class="form-control" placeholder="Contraseña" required runat="server"></asp:TextBox>
                                     </div>
                                     <div class="form-group">
                                         <asp:Label ID="Errors" runat="server" Text=" <br> " CssClass="text-danger"></asp:Label>

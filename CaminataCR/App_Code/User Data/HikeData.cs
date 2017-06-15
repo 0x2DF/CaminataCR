@@ -172,13 +172,16 @@ public class HikeData : BaseData
 
                 using (SqlDataReader sqlReader = sqlCommand.ExecuteReader())
                 {
-                    hike.Latitud = sqlReader.GetDouble(0);
-                    hike.Longitud = sqlReader.GetDouble(1);
-                    hike.NameOfLocation = sqlReader["nombreDelLugar"].ToString();
-                    hike.Province = sqlReader["provincia"].ToString();
-                    hike.Canton = sqlReader["canton"].ToString();
-                    hike.District = sqlReader["distrito"].ToString();
-                    hike.Details = sqlReader["detalle"].ToString();
+                    if (sqlReader.Read())
+                    {
+                        hike.NameOfLocation = sqlReader["nombreDelLugar"].ToString();
+                        hike.Province = sqlReader["provincia"].ToString();
+                        hike.Canton = sqlReader["canton"].ToString();
+                        hike.District = sqlReader["distrito"].ToString();
+                        hike.Details = sqlReader["detalle"].ToString();
+                        hike.Latitud = sqlReader.GetDouble(5);
+                        hike.Longitud = sqlReader.GetDouble(6);
+                    }
                 }
             }
             ManageDatabaseConnection("Close", "regular");
@@ -205,14 +208,17 @@ public class HikeData : BaseData
 
                 using (SqlDataReader sqlReader = sqlCommand.ExecuteReader())
                 {
-                    hike.HikeId = (int)sqlReader["idCaminata"];
-                    hike.Latitud = sqlReader.GetDouble(1);
-                    hike.Longitud = sqlReader.GetDouble(2);
-                    hike.NameOfLocation = sqlReader["nombreDelLugar"].ToString();
-                    hike.Province = sqlReader["provincia"].ToString();
-                    hike.Canton = sqlReader["canton"].ToString();
-                    hike.District = sqlReader["distrito"].ToString();
-                    hike.Details = sqlReader["detalle"].ToString();
+                    if (sqlReader.Read())
+                    {
+                        hike.HikeId = (int)sqlReader["idCaminata"];
+                        hike.Latitud = sqlReader.GetDouble(1);
+                        hike.Longitud = sqlReader.GetDouble(2);
+                        hike.NameOfLocation = sqlReader["nombreDelLugar"].ToString();
+                        hike.Province = sqlReader["provincia"].ToString();
+                        hike.Canton = sqlReader["canton"].ToString();
+                        hike.District = sqlReader["distrito"].ToString();
+                        hike.Details = sqlReader["detalle"].ToString();
+                    }
                 }
             }
             ManageDatabaseConnection("Close", "regular");
@@ -238,9 +244,12 @@ public class HikeData : BaseData
 
                 using (SqlDataReader sqlReader = sqlCommand.ExecuteReader())
                 {
-                    Route route = new Route();
-                    route.RouteId = (int)sqlReader["idRuta"];
-                    listOfRoutes.Add(route);
+                    while (sqlReader.Read())
+                    {
+                        Route route = new Route();
+                        route.RouteId = (int)sqlReader["idRuta"];
+                        listOfRoutes.Add(route);
+                    }
                 }
             }
             ManageDatabaseConnection("Close", "regular");
@@ -266,12 +275,15 @@ public class HikeData : BaseData
 
                 using (SqlDataReader sqlReader = sqlCommand.ExecuteReader())
                 {
-                    Point point = new Point();
-                    point.PointId = (int)sqlReader["idPuntosImportantes"];
-                    point.Pos = (int)sqlReader["posicion"];
-                    point.Longitud = sqlReader.GetDouble(2);
-                    point.Latitud = sqlReader.GetDouble(3);
-                    listOfPoints.Add(point);
+                    while (sqlReader.Read())
+                    {
+                        Point point = new Point();
+                        point.PointId = (int)sqlReader["idPuntosImportantes"];
+                        point.Pos = (int)sqlReader["posicion"];
+                        point.Longitud = sqlReader.GetDouble(2);
+                        point.Latitud = sqlReader.GetDouble(3);
+                        listOfPoints.Add(point);
+                    }
                 }
             }
             ManageDatabaseConnection("Close", "regular");

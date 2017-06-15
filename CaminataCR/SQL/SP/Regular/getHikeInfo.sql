@@ -2,7 +2,7 @@
 	@idCaminata int
 AS
 BEGIN
-	SELECT C.latitud, C.longitud, C.nombreDelLugar, P.provincia, Ca.canton, D.distrito, C.detalle FROM Caminata C
+	SELECT C.nombreDelLugar, P.provincia, Ca.canton, D.distrito, C.detalle, C.latitud, C.longitud FROM Caminata C
 	INNER JOIN Provincia P
 		ON C.idProvincia = P.idProvincia
 	INNER JOIN Canton Ca

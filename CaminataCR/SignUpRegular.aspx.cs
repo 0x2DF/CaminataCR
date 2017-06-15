@@ -105,7 +105,8 @@ public partial class SignUpRegular : System.Web.UI.Page
         Regex rPhone = new Regex("^\\([0-9]{3}\\)[0-9]{4}-[0-9]{4}$");
         //rBankAccount : numeric
         Regex rBankAccount = new Regex("^[0-9]*$");
-
+        //rDate : yyyy/MM/dd
+        Regex rDate = new Regex("^\\d{4}$\\/\\d{1,2}\\/\\d{1,2}");
         //Nombre De Usuario
         if ((username.Text.Length == 0) || (username.Text.Length > 20)) errorList.Add("Nombre de usuario : Tamaño incorrecto [20] maximo.");
         if (!rUsername.IsMatch(username.Text)) errorList.Add("Nombre de usuario : Solo se permiten caracters alphanumericos con longitud [3] minimo.");
@@ -148,6 +149,9 @@ public partial class SignUpRegular : System.Web.UI.Page
         //Cuenta Bancaria
         if ((bankAccount.Text.Length == 0) || (bankAccount.Text.Length > 20)) errorList.Add("Cuenta Bancaria : Tamaño incorrecto [20] maximo.");
         if (!rBankAccount.IsMatch(bankAccount.Text)) errorList.Add("Cuenta Bancaria : Solo caracteres numericos.");
+
+        //Fecha Nacimiento
+        if (!rDate.IsMatch(bdate.Text)) errorList.Add("Fecha Nacimiento : yyyy/MM/dd");
 
         //fotografia
         if (imageupload.HasFile)

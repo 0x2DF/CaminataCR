@@ -67,15 +67,8 @@ public partial class Donations : System.Web.UI.Page
     {
         List<string> errorList = new List<string>();
         
-        //rPassword : 1 upper case, 1 lower case, 1 digit, 1 special char, min 8 length
-        Regex rPassword = new Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#?!@$%^&*-])[A-Za-z\\d#?!@$%^&*-]{8,}$");
         //rBankAccount : numeric
         Regex rAmount = new Regex("^[0-9]*$");
-       
-        //Contraseña
-        if ((password.Text.Length == 0) || (password.Text.Length > 20)) errorList.Add("Contraseña : Tamaño incorrecto [20] maximo.");
-        if (!rPassword.IsMatch(password.Text)) errorList.Add("Contraseña : Minimo 1 caracter en mayuscula, 1 en minuscula, 1 numero, y con longitud [8] minimo.");
-
        
         //Cantidad
         if ((amount.Text.Length == 0) || (amount.Text.Length > 20)) errorList.Add("Cantidad : Tamaño incorrecto [20] maximo.");
