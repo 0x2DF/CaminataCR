@@ -14,14 +14,11 @@ public partial class SearchFriends : System.Web.UI.Page
             Response.Redirect("SignInRegular.aspx");
         }
 
-        if(IsPostBack)
+        RegularUser regularUser = (RegularUser)Session["REG_USER"];
+        LoggedInUsername.Text = regularUser.Account;
+        if(regularUser.ListOfFriends != null)
         {
-            RegularUser regularUser = (RegularUser)Session["REG_USER"];
-            LoggedInUsername.Text = regularUser.Account;
-            if(regularUser.ListOfFriends != null)
-            {
-                displayUsers(regularUser);
-            }
+            displayUsers(regularUser);
         }
     }
 
@@ -31,7 +28,6 @@ public partial class SearchFriends : System.Web.UI.Page
         RegularUser regularUser = (RegularUser)Session["REG_USER"];
         fb.LoadListOfRegularUsers(ref regularUser, searchInput.Text);
         displayUsers(regularUser);
-
         Session["REG_USER"] = regularUser;
     }
 

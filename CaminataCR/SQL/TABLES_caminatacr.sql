@@ -177,7 +177,7 @@ fechaHora DATETIME NOT NULL,
 descripcion VARCHAR(500) NOT NULL,
 tipoCambio VARCHAR(500) NOT NULL,
 objeto VARCHAR(500) NOT NULL,
-idUsuario INT NOT NULL FOREIGN KEY REFERENCES Usuario (idUsuario)
+idUsuario VARCHAR(500) NOT NULL
 )
 
 Create Table Donacion
