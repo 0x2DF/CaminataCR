@@ -60,7 +60,7 @@ public partial class LogWindow : System.Web.UI.Page
             query.Table = DDLstObjeto.Text;
         }
 
-        if (!ChxActivarFecha.Checked && !ChxActivarHora.Checked && !ChxActivarTipoCambio.Checked && !ChxActivarObjeto.Checked)
+        if(!ChxActivarFecha.Checked && !ChxActivarHora.Checked && !ChxActivarTipoCambio.Checked && !ChxActivarObjeto.Checked)
         {
             query.All = true;
         }

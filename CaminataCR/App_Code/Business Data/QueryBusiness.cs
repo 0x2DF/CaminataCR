@@ -9,7 +9,6 @@ public class QueryBusiness
 
     public QueryBusiness()
     {
-
     }
 
     public List<Query> ReadQuery(Query query)
@@ -22,25 +21,26 @@ public class QueryBusiness
         string message = "SELECT * FROM Bitacora B";
         int counter = 0;
 
-        if (!query.All)
+        if(!query.All)
         {
             message += " WHERE ";
 
-            if (query.StartDate != "")
+            if(query.StartDate != "")
             {
                 message += "B.fechaHora BETWEEN '" + query.StartDate + "' AND '" + query.FinalDate + "'";
                 counter++;
             }
 
-            if (query.Time != "")
+            if(query.Time != "")
             {
-                if (counter != 0) { message += " AND "; }
+                if(counter != 0) { message += " AND "; }
 
                 message += "B.fechaHora = '" + query.Time + "'";
                 counter++;
             }
 
-            if (query.Type != "")
+
+            if(query.Type != "")
             {
                 if (counter != 0) { message += " AND "; }
 
@@ -48,7 +48,7 @@ public class QueryBusiness
                 counter++;
             }
 
-            if (query.Table != "")
+            if(query.Table != "")
             {
                 if (counter != 0) { message += " AND "; }
 
