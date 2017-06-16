@@ -8,6 +8,6 @@ BEGIN
 		SELECT GETDATE(), 'Modificación de nivel de calidad ' + nuevo.nivelDeCalidad, SYSTEM_USER, 'UPDATE', 'NivelDeCalidad'
 		FROM inserted nuevo
 			INNER JOIN deleted original
-				ON nuevo.idUsuario = original.idUsuario
+				ON nuevo.idNivelDeCalidad = original.idNivelDeCalidad
 
 END

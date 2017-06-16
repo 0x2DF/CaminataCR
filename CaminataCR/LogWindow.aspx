@@ -75,7 +75,7 @@
                     <div class="sidebar-nav navbar-collapse" style="background-color: green; background-repeat: no-repeat;">
                         <ul class="nav " id="side-menu" style="background: green; background-repeat: no-repeat;">
                             <li>
-                                <a href="#" style="color: white; background: green"><i class="fa fa-table fa-fw"></i>Bitácora</a>
+                                <a href="LogWindow.aspx" style="color: white; background: green"><i class="fa fa-table fa-fw"></i>Bitácora</a>
                             </li>
                             <li>
                                 <a href="#" style="color: white; background: green"><i class="fa fa-sitemap fa-fw"></i>Mantenimiento catálogos<span class="fa arrow"></span></a>
