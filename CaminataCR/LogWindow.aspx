@@ -181,6 +181,9 @@
                                                                
                 </div>
                 <!-- /.container-fluid -->
+
+                <asp:Table ID="LogTable" runat="server"></asp:Table>
+
             </div>
             <!-- /#page-wrapper -->
 

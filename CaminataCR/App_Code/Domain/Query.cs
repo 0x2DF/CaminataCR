@@ -8,11 +8,15 @@ using System.Web;
 /// </summary>
 public class Query
 {
-    private string startDate;
-    private string finalDate;
-    private string time;
-    private string type;
-    private string table;
+    private string startDate = "";
+    private string finalDate = "";
+    private string time = "";
+    private string type = "";
+    private string table = "";
+    private string date = "";
+    private bool all = false;
+    private string user = "";
+    private string description = "";
 
     public string StartDate
     {
@@ -76,6 +80,58 @@ public class Query
         set
         {
             table = value;
+        }
+    }
+
+    public string Date
+    {
+        get
+        {
+            return date;
+        }
+
+        set
+        {
+            date = value;
+        }
+    }
+
+    public bool All
+    {
+        get
+        {
+            return all;
+        }
+
+        set
+        {
+            all = value;
+        }
+    }
+
+    public string User
+    {
+        get
+        {
+            return user;
+        }
+
+        set
+        {
+            user = value;
+        }
+    }
+
+    public string Description
+    {
+        get
+        {
+            return description;
+        }
+
+        set
+        {
+            description = value;
         }
     }
 
