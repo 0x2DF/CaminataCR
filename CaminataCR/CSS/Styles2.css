@@ -1,0 +1,347 @@
+﻿body {
+    background-color:#2D9AE1;
+}
+
+
+.input {
+ height:20px;
+ width:100px;
+}
+
+#containerTemp {
+  height:40px;
+  width:700px;
+  
+  position:absolute;
+  top: 70px;
+  left: 70px;
+}
+
+.container {
+  height:700px;
+  width:1100px;
+  position:absolute;
+  top: 70px;
+  left: 400px;
+  background:white;
+  border-bottom: solid black;
+  border-left: solid black;
+  border-right: solid black;
+  border-top: solid black;
+  overflow: auto
+}
+
+.date {
+    height:20px;
+    width:50px;
+}
+
+#makeConsult {
+  position:absolute;
+  top: 65px;
+  left: 930px;
+
+}
+
+#infoTable {
+  position:absolute;
+  top: 150px;
+  left: 20px;
+  border:1px solid;
+  border-collapse:collapse;
+}
+
+#infoTable td {
+    border:1px solid;
+    text-align:center;  
+}
+
+#startDateLabel {
+  position:absolute;
+  top: 70px;
+  left: 340px;
+}
+
+#inputTop {
+  position:absolute;
+  top: 65px;
+  left: 180px;
+}
+
+#tableTemp {
+  position:absolute;
+  top: 150px;
+  left: 100px;
+  border:1px solid;
+  border-collapse:collapse;
+}
+
+#tableTemp td {
+    border:1px solid;
+    text-align:center;  
+}
+
+#tableTemp tr:hover {
+      background-color:#4cff00;
+}
+
+#endYear {
+  position:absolute;
+  top: 65px;
+  left: 830px;
+}
+
+#endMonth {
+  position:absolute;
+  top: 65px;
+  left: 760px;
+}
+
+#endDay {
+  position:absolute;
+  top: 65px;
+  left: 690px;
+}
+
+#endDateLabel {
+  position:absolute;
+  top: 70px;
+  left: 620px;
+}
+
+
+#startYear {
+  position:absolute;
+  top: 65px;
+  left: 530px;
+}
+
+#startMonth {
+  position:absolute;
+  top: 65px;
+  left: 460px;
+}
+#startDay {
+  position:absolute;
+  top: 65px;
+  left: 390px;
+}
+
+#topLabel {
+  position:absolute;
+  top: 70px;
+  left: 100px;
+}
+
+#infoTable tr:hover {
+      background-color:#4cff00;
+}
+
+#TopN {
+  position:absolute;
+  top: 30px;
+  left: 100px;
+
+}
+
+#LabelTopN {
+  position:absolute;
+  top: 32px;
+  left: 40px;
+}
+
+#dataRangeLabel {
+  position:absolute;
+  top: 32px;
+  left: 240px;
+}
+
+#dataRangeStart {
+  position:absolute;
+  top: 30px;
+  left: 390px;
+
+
+}
+
+#imageContainer {
+  position:absolute;
+  top: 150px;
+  left: 600px;
+  height:400px;
+  width:400px;
+  border-bottom: solid red;
+  border-left: solid red;
+  border-right: solid red;
+  border-top: solid red;
+  background:dimgrey;
+
+}
+
+#comeBack2 {
+  position:absolute;
+  top: 800px;
+  left: 900px;
+  height:70px;
+  width:100px;
+}
+
+#orderBy {
+  position:absolute;
+  top: 5px;
+  left: 590px;
+}
+
+#comeBack {
+  position:absolute;
+  top: 800px;
+  left: 900px;
+  height:70px;
+  width:100px;
+}
+
+#orderASCDES {
+  position:absolute;
+  top: 70px;
+  left: 840px;
+}
+
+#search {
+  position:absolute;
+  top: 70px;
+  left: 960px;
+  height:30px;
+  width:70px;
+}
+
+#startDayI{
+  position:absolute;
+  top: 32px;
+  left: 350px;
+}
+
+#startMonthI {
+  position:absolute;
+  top: 32px;
+  left: 420px;
+}
+
+#startYearI {
+  position:absolute;
+  top: 32px;
+  left: 490px;
+}
+
+#dataRangeLabelEnd {
+  position:absolute;
+  top: 35px;
+  left: 560px;
+}
+
+#endDayI {
+  position:absolute;
+  top: 32px;
+  left: 610px;
+}
+
+#endMonthI {
+  position:absolute;
+  top: 32px;
+  left: 680px;
+}
+
+#endYearI {
+  position:absolute;
+  top: 32px;
+  left: 750px;
+}
+
+#order {
+  position:absolute;
+  top: 32px;
+  left: 840px;
+}
+
+#tableClassification {
+  position:absolute;
+  top: 200px;
+  left: 100px;
+}
+
+#groupList {
+  position:absolute;
+  top: 30px;
+  left: 100px;
+}
+
+
+#tableClassification {
+  position:absolute;
+  top: 150px;
+  left: 50px;
+  border:1px solid;
+  border-collapse:collapse;
+}
+
+#tableClassification td {
+    border:1px solid;
+    text-align:center;  
+}
+
+#tableClassification tr:hover {
+      background-color:#4cff00;
+}
+
+#aply {
+  position:absolute;
+  top: 50px;
+  left: 400px;
+
+}
+
+.tempTable {
+  position:absolute;
+  border:1px solid;
+  border-collapse:collapse;
+}
+
+.tempTable td {
+    border:1px solid;
+    text-align:center;  
+}
+
+.tempTable tr:hover {
+      background-color:#4cff00;
+}
+
+#TableIdtipoDeCaminata {
+  position:absolute;
+  top: 150px;
+  left: 450px;
+}
+
+#TableIdNivelDePrecio {
+  position:absolute;
+  top: 150px;
+  left: 770px;
+
+}
+
+#TableIdNivelDeDificultad {
+  position:absolute;
+  top: 150px;
+  left: 1090px;
+}
+
+#TableIdNivelDeCalidad {
+  position:absolute;
+  top: 150px;
+  left: 1410px;
+}
+
+#temp1 {
+     width:1750px;
+     position:absolute;
+     left: 100px;
+}
+
