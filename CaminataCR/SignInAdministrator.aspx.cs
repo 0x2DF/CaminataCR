@@ -26,8 +26,7 @@ public partial class SignInAdministrator : System.Web.UI.Page
         string errorText = lb.ValidateCredentials(user);
 
         if (errorText == null)
-        {
-            
+        {           
 
             Session["ADMIN"] = user.Account;
             Response.Redirect("CatalogMaintenance.aspx");

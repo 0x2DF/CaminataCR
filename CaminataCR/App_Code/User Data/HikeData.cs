@@ -610,7 +610,7 @@ public class HikeData : BaseData
             //open database connection
             SqlConnection connection = ManageDatabaseConnection("Open", "regular");
 
-            using (SqlCommand sqlCommand = new SqlCommand("getHikeTypes", connection))
+            using (SqlCommand sqlCommand = new SqlCommand("getActiveHikeTypes", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
@@ -639,7 +639,7 @@ public class HikeData : BaseData
             //open database connection
             SqlConnection connection = ManageDatabaseConnection("Open", "regular");
 
-            using (SqlCommand sqlCommand = new SqlCommand("getDifficultyLevels", connection))
+            using (SqlCommand sqlCommand = new SqlCommand("getActiveDifficultyLevels", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
@@ -668,7 +668,7 @@ public class HikeData : BaseData
             //open database connection
             SqlConnection connection = ManageDatabaseConnection("Open", "regular");
 
-            using (SqlCommand sqlCommand = new SqlCommand("getQualityLevels", connection))
+            using (SqlCommand sqlCommand = new SqlCommand("getActiveQualityLevels", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
@@ -697,7 +697,7 @@ public class HikeData : BaseData
             //open database connection
             SqlConnection connection = ManageDatabaseConnection("Open", "regular");
 
-            using (SqlCommand sqlCommand = new SqlCommand("getPriceLevels", connection))
+            using (SqlCommand sqlCommand = new SqlCommand("getActivePriceLevels", connection))
             {
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 

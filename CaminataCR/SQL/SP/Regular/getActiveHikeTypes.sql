@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].getHikeTypes
+﻿CREATE PROCEDURE [dbo].getActiveHikeTypes
 AS
 BEGIN
 	SELECT tipoDeCaminata FROM TipoDeCaminata WHERE activo = 1

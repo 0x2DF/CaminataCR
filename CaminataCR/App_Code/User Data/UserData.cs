@@ -438,4 +438,150 @@ public class UserData : BaseData
         //Debug.WriteLine(resultID);
         return resultID;
     }
+
+    public List<User> getRegularUsers()
+    {
+        List<User> regularUsers = new List<User>();
+        try
+        {
+            SqlConnection connection = ManageDatabaseConnection("Open", "admin");
+            using (SqlCommand sqlCommand = new SqlCommand("getRegularUsers", connection))
+            {
+                using (SqlDataReader sqlReader = sqlCommand.ExecuteReader())
+                {
+                    while (sqlReader.Read())
+                    {
+                        User user = new User();
+
+                        user.Account = sqlReader["cuenta"].ToString();
+                        user.State = (bool)sqlReader["activo"];
+
+                        regularUsers.Add(user);
+                    }
+                }
+            }
+            ManageDatabaseConnection("Close", "admin");
+
+        }
+        catch (SqlException sqlException)
+        {
+            throw sqlException;
+        } 
+
+        return regularUsers;
+    }
+
+    public void editRegularUser(string userName, int state)
+    {
+        try
+        {
+            SqlConnection connection = ManageDatabaseConnection("Open", "admin");
+            using (SqlCommand sqlCommand = new SqlCommand("editRegularUser", connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@account", userName);
+                sqlCommand.Parameters.AddWithValue("@state", state);                
+
+                sqlCommand.ExecuteNonQuery();
+            }
+            ManageDatabaseConnection("Close", "admin");
+
+        }
+        catch (SqlException sqlException)
+        {
+            throw sqlException;
+        }
+    }
+
+    public List<User> getUsers(int roleId, string userName)
+    {
+        List<User> users = new List<User>();
+        try
+        {
+            SqlConnection connection = ManageDatabaseConnection("Open", "admin");
+            using (SqlCommand sqlCommand = new SqlCommand("getusers", connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@roleId", roleId);
+                sqlCommand.Parameters.AddWithValue("@account", userName);
+
+                using (SqlDataReader sqlReader = sqlCommand.ExecuteReader())
+                {                    
+                    while (sqlReader.Read())
+                    {
+                        User user = new User();
+
+                        user.Account = sqlReader["cuenta"].ToString();
+
+                        users.Add(user);
+                    }
+                }
+            }
+            ManageDatabaseConnection("Close", "admin");
+
+        }
+        catch (SqlException sqlException)
+        {
+            throw sqlException;
+        }
+
+        return users;
+    }
+
+    
+
+       
+    public int editUser(string newUserName, string oldUserName)
+    {
+        int error = 0;
+        try
+        {
+            SqlConnection connection = ManageDatabaseConnection("Open", ("admin"));
+            using (SqlCommand sqlCommand = new SqlCommand("dbo.edituser", connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@oldUsername", oldUserName);
+                sqlCommand.Parameters.AddWithValue("@newUserName", newUserName);
+
+                var returnParameter = sqlCommand.Parameters.Add("@error", SqlDbType.Int);
+                returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                sqlCommand.ExecuteNonQuery();
+                error = Convert.ToInt32(returnParameter.Value);
+
+            }
+            ManageDatabaseConnection("Close", ("admin"));
+
+        }
+        catch (SqlException sqlException)
+        {
+            throw sqlException;
+        }
+
+        return error;
+    }
+
+    public void deletUser(string userName)
+    {
+        try
+        {
+            SqlConnection connection = ManageDatabaseConnection("Open", ("admin"));
+            using (SqlCommand sqlCommand = new SqlCommand("dbo.deleteuser", connection))
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.AddWithValue("@userName", userName);
+
+                sqlCommand.ExecuteNonQuery();
+
+            }
+            ManageDatabaseConnection("Close", ("admin"));
+
+        }
+        catch (SqlException sqlException)
+        {
+            throw sqlException;
+        }
+    }
+
+
 }

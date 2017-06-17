@@ -1,29 +1,29 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="UserICT.aspx.cs" Inherits="UserICT" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AddAdministrator.aspx.cs" Inherits="AddAdministrator" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
     <title>Administradores</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet"/>
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet"/>
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -131,30 +131,38 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Usuarios del ICT</h1>
+                            <h1 class="page-header">Agregar administrador</h1>
                         </div>
-                        <div class="col-lg-12">
-                            <asp:Button ID="Button1" runat="server" Text="Agregar" class="btn btn-outline btn-success" OnClick="addICT" />
-                        </div>
-                        <div class="col-md-4 col-md-offset-4">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    ICT
-                                </div>
-                                <div class="panel-body">
-                                    <div id="ICTS" class="table-responsive" runat="server"></div>
-                                    <!-- /.table-responsive -->
-                                </div>
-                            </div>
-                            <!-- /.container-fluid -->
-                        </div>
-                        <!-- /.col-lg-12 -->
                     </div>
-                    <!-- /.row -->
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <asp:Label ID="Label1" runat="server" Text="Nombre de usuario"></asp:Label>
+                        </div>
+                        <div class="form-group">
+                            <asp:TextBox ID="administrator" placeholder="Usuario" class="form-control" required runat="server"></asp:TextBox>
+
+                        </div>
+                        <div class="form-group">
+                            <asp:Label ID="Label2" runat="server" Text="Contraseña"></asp:Label>
+                        </div>
+                        <div class="form-group">
+                            <asp:TextBox ID="password" placeholder="Contraseña" class="form-control" required runat="server" type="password"></asp:TextBox>
+
+                        </div>
+                        <div class="form-group">
+                            <asp:Button ID="a" runat="server" Text="Agregar" CssClass="btn btn-outline btn-success" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" onClick="CreateAdministrator" />
+                        </div>
+                        <div class="form-group">
+                            <asp:Label ID="Errors" runat="server" Text=" <br> " CssClass="text-danger"></asp:Label>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.container-fluid -->
+                <!-- /.row -->
             </div>
-            <!-- /#page-wrapper -->
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
 
         </div>
         <!-- /#wrapper -->

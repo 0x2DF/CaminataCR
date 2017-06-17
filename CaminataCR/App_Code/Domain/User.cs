@@ -9,6 +9,7 @@ public class User
     protected string account;
     protected string password;
     protected int roleId;
+    protected bool state;
 
     public int UserId
     {
@@ -59,6 +60,19 @@ public class User
         set
         {
             roleId = value;
+        }
+    }
+
+    public bool State
+    {
+        get
+        {
+            return state;
+        }
+
+        set
+        {
+            state = value;
         }
     }
 

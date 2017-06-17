@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].getQualityLevels
+﻿CREATE PROCEDURE [dbo].getActiveQualityLevels
 AS
 BEGIN
 	SELECT nivelDeCalidad FROM NivelDeCalidad WHERE activo = 1
