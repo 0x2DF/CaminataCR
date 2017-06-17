@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="UserRegular.aspx.cs" Inherits="UserRegular" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="EditAdministrator.aspx.cs" Inherits="EditUser" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -131,19 +131,27 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Inhabilitar usuarios regulares</h1>
+                            <h1 class="page-header">Editar  administrador</h1>
                         </div>
-                        <div class="col-md-4 col-md-offset-4">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Usuarios
-                                </div>
-                                <div class="panel-body">
-                                    <div id="regularUsersS" class="table-responsive" runat="server"></div>
-                                    <!-- /.table-responsive -->
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <asp:Label ID="Label2" runat="server" Text="Nombre de usuario"></asp:Label>
+
+                            </div>
+                            <div class="form-group">
+                                <asp:TextBox ID="administrator" placeholder="Administrador" class="form-control" required runat="server"></asp:TextBox>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="row">
+                                    <asp:Button ID="a" runat="server" Text="Agregar" CssClass="btn btn-success btn-outline" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" OnClick="editUser" />
+                                    <asp:Button ID="Button1" runat="server" Text="Eliminar" CssClass="btn btn-success btn-outline" BackColor="#269E22" BorderColor="#269E22" ForeColor="White" Font-Bold="True" OnClick="deleteUser" />
                                 </div>
                             </div>
-                            <!-- /.container-fluid -->
+
+                            <div class="form-group">
+                                <asp:Label ID="Errors" runat="server" Text=" <br> " CssClass="text-danger"></asp:Label>
+                            </div>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
