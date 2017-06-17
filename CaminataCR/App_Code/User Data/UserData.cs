@@ -438,6 +438,7 @@ public class UserData : BaseData
         //Debug.WriteLine(resultID);
         return resultID;
     }
+<<<<<<< HEAD
 
     public List<User> getRegularUsers()
     {
@@ -585,4 +586,6 @@ public class UserData : BaseData
 
 
     
+=======
+>>>>>>> 4054bcc5352cb2ee701ff237b9fb2cbd6c5690b4
 }

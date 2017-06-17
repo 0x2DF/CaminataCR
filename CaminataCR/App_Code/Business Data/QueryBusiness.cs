@@ -9,7 +9,6 @@ public class QueryBusiness
 
     public QueryBusiness()
     {
-        
     }
 
     public List<Query> ReadQuery(Query query)
@@ -39,6 +38,7 @@ public class QueryBusiness
                 message += "B.fechaHora = '" + query.Time + "'";
                 counter++;
             }
+
 
             if(query.Type != "")
             {

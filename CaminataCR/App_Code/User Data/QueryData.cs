@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 public class QueryData : BaseData
 {
     public QueryData()
-    {   
+    {
     }
 
     public List<Query> LoadListOfQueries(string message)
@@ -19,7 +19,7 @@ public class QueryData : BaseData
         List<Query> listOfQueries = new List<Query>();
         try
         {
-            SqlConnection connection = ManageDatabaseConnection("Open", "regular");
+            SqlConnection connection = ManageDatabaseConnection("Open", "admin");
 
             using (SqlCommand sqlCommand = new SqlCommand(message, connection))
             {
