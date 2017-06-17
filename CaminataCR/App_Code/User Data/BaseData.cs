@@ -9,7 +9,7 @@ public class BaseData
         string connectionString;
         if (userType == "admin")
         {
-            connectionString = "Data Source=0X2F-;Integrated Security=False;User ID=admin;Password=admin;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            connectionString = "Data Source=DESKTOP-3VGUL7E;Integrated Security=False;User ID=admin;Password=admin;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;database = caminataCR";
         }
         else if (userType == "ICT")
         {
