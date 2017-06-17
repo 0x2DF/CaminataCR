@@ -13,7 +13,7 @@ public class BaseData
         }
         else if (userType == "ICT")
         {
-            connectionString = "Data Source=0X2F-;Integrated Security=False;User ID=ICT;Password=ict;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            connectionString = "Data Source=DESKTOP-3VGUL7E;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;database = caminataCR";
         }
         else if (userType == "regular")
         {
