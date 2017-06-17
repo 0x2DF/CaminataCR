@@ -8,6 +8,6 @@ BEGIN
 		SELECT GETDATE(), 'Modificación de tipo de caminata ' + nuevo.tipoDeCaminata, SYSTEM_USER, 'UPDATE', 'TipoDeCaminata'
 		FROM inserted nuevo
 			INNER JOIN deleted original
-				ON nuevo.idUsuario = original.idUsuario
+				ON nuevo.idTipoDeCaminata = original.idTipoDeCaminata
 
 END
